@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
               bodyMedium: TextStyle(color: AppColors.textColor)
           )
       ),
-      initialRoute: AppRoutes.SPLASH,
+      initialRoute: AppRoutes.INTRO,
       getPages: AppPages.pages,
     );
   }

@@ -1,13 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:qlish/src/view/home/main/home_controller.dart';
 
-class HomePage extends StatelessWidget{
-  HomePage({super.key});
+import 'signup_controller.dart';
+
+
+
+
+class SignUpPage extends StatelessWidget{
+  SignUpPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return  GetBuilder<HomeController>(
+    return  GetBuilder<SignUpController>(
       builder: (controller) {
         return SafeArea(
           child: Scaffold(
@@ -15,7 +19,7 @@ class HomePage extends StatelessWidget{
               title: Text("Hello"),
             ),
             body: Text(
-              "Hello Home",
+              "Sign up",
               style: TextStyle(fontSize: 20),
             ),
           ),
