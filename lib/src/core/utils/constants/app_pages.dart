@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:qlish/src/core/utils/constants/app_routes.dart';
+import 'package:qlish/src/presentation/view/emailVerify/email_verify_page.dart';
 import 'package:qlish/src/presentation/view/signin.main/signin_binding.dart';
 import 'package:qlish/src/presentation/view/signin.main/signin_page.dart';
 import 'package:qlish/src/presentation/view/signup/main/signup_binding.dart';
@@ -35,6 +36,10 @@ class AppPages {
       name: AppRoutes.SIGNIN,
       page: () => SignInPage(),
       binding: SignInBinding()
+    ),
+    GetPage(
+      name: AppRoutes.EMAIL_VERIFY,
+      page: () => EmailVerifyPage(),
     ),
   ];
 }
