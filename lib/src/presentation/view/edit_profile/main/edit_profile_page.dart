@@ -60,7 +60,7 @@ class EditProfilePage extends StatelessWidget {
                               border: Border.all(width: 4, color: Colors.white),
                               color: AppColors.mainColor
                             ),
-                            child: Icon(Icons.edit, color: Colors.white, size: 20,),
+                            child: const Icon(Icons.edit, color: Colors.white, size: 20,),
                           )
                         )
                       ],

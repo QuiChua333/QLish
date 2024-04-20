@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
               bodyMedium: TextStyle(color: AppColors.textColor, fontSize: 14),
           )
       ),
-      initialRoute: AppRoutes.EDIT_PROFILE,
+      initialRoute: AppRoutes.BOTTOM_NAVIGATION,
       getPages: AppPages.pages,
     );
   }
