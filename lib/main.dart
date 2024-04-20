@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
               bodyMedium: TextStyle(color: AppColors.textColor, fontSize: 14),
           )
       ),
-      initialRoute: AppRoutes.SIGNUP,
+      initialRoute: AppRoutes.EDIT_PROFILE,
       getPages: AppPages.pages,
     );
   }
