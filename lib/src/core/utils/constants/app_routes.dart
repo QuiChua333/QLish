@@ -10,5 +10,7 @@ class AppRoutes {
   static const String CHANGE_PASSWORD = "/changepassword";
   static const String CHANGE_NAME = "/changename";
   static const String BOTTOM_NAVIGATION = "/bottomnavigation";
+  static const String IPA = "/ipa";
+  static const String LEARNING_VOCABULARY = "/learningvocabulary";
 
 }

@@ -14,7 +14,7 @@ Widget Course({name ="", description="", assetImage="", backgroundColor, bottomS
         )
       )
     ),
-    padding: EdgeInsets.only(top: 24, left: 24, bottom: 24, right: 8),
+    padding: const EdgeInsets.only(top: 24, left: 24, bottom: 24, right: 8),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

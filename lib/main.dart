@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
               bodyMedium: TextStyle(color: AppColors.textColor, fontSize: 14),
           )
       ),
-      initialRoute: AppRoutes.BOTTOM_NAVIGATION,
+      initialRoute: AppRoutes.LEARNING_VOCABULARY,
       getPages: AppPages.pages,
     );
   }

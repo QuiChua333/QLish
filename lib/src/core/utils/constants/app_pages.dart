@@ -5,6 +5,8 @@ import 'package:qlish/src/presentation/view/change_name/main/change_name_page.da
 import 'package:qlish/src/presentation/view/change_password/main/change_password_page.dart';
 import 'package:qlish/src/presentation/view/edit_profile/main/edit_profile_page.dart';
 import 'package:qlish/src/presentation/view/emailVerify/email_verify_page.dart';
+import 'package:qlish/src/presentation/view/ipa/main/ipa_page.dart';
+import 'package:qlish/src/presentation/view/learning_vocabulary/main/learning_vocabulary_page.dart';
 import 'package:qlish/src/presentation/view/navigation_menu/navigation_menu.dart';
 import 'package:qlish/src/presentation/view/signin.main/signin_binding.dart';
 import 'package:qlish/src/presentation/view/signin.main/signin_page.dart';
@@ -62,5 +64,14 @@ class AppPages {
       name: AppRoutes.BOTTOM_NAVIGATION,
       page: () => NavigationMenu(),
     ),
+    GetPage(
+      name: AppRoutes.IPA,
+      page: () => IPAPage(),
+    ),
+    GetPage(
+      name: AppRoutes.LEARNING_VOCABULARY,
+      page: () => LearningVocabularyPage(),
+    ),
+
   ];
 }

@@ -14,6 +14,7 @@ class CustomButton extends StatelessWidget {
     this.width,
     this.height,
     this.textWeight,
+    this.textSize,
   }) : super(key: key);
   VoidCallback onTap;
   Color? backgroundColor;
@@ -22,6 +23,7 @@ class CustomButton extends StatelessWidget {
   String text;
   double? width;
   double? height;
+  double? textSize;
   FontWeight? textWeight;
 
   @override
@@ -39,7 +41,7 @@ class CustomButton extends StatelessWidget {
             text,
             style: TextStyle(
                 color: textColor ?? AppColors.textColor,
-                fontSize: 16,
+                fontSize: textSize ?? 16,
                 fontWeight: textWeight ?? FontWeight.w400),
           ),
         ));
