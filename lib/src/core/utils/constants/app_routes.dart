@@ -12,5 +12,6 @@ class AppRoutes {
   static const String BOTTOM_NAVIGATION = "/bottomnavigation";
   static const String IPA = "/ipa";
   static const String LEARNING_VOCABULARY = "/learningvocabulary";
+  static const String LEARNING_VOCABULARY_ROUND = "/learningvocabularyround";
 
 }

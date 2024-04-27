@@ -7,6 +7,7 @@ import 'package:qlish/src/presentation/view/edit_profile/main/edit_profile_page.
 import 'package:qlish/src/presentation/view/emailVerify/email_verify_page.dart';
 import 'package:qlish/src/presentation/view/ipa/main/ipa_page.dart';
 import 'package:qlish/src/presentation/view/learning_vocabulary/main/learning_vocabulary_page.dart';
+import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/learning_vocabulary_round_page.dart';
 import 'package:qlish/src/presentation/view/navigation_menu/navigation_menu.dart';
 import 'package:qlish/src/presentation/view/signin.main/signin_binding.dart';
 import 'package:qlish/src/presentation/view/signin.main/signin_page.dart';
@@ -71,6 +72,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.LEARNING_VOCABULARY,
       page: () => LearningVocabularyPage(),
+    ),
+    GetPage(
+      name: AppRoutes.LEARNING_VOCABULARY_ROUND,
+      page: () => LearningVocabularyRoundPage(),
     ),
 
   ];
