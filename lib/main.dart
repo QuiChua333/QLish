@@ -32,10 +32,10 @@ class MyApp extends StatelessWidget {
           ),
           textTheme: TextTheme(
               bodyLarge: TextStyle(color: AppColors.textColor),
-              bodyMedium: TextStyle(color: AppColors.textColor, fontSize: 14),
+              bodyMedium: TextStyle(color: AppColors.textColor, fontSize: 15),
           )
       ),
-      initialRoute: AppRoutes.LEARNING_VOCABULARY_ROUND,
+      initialRoute: AppRoutes.DETAIL_RANK,
       getPages: AppPages.pages,
     );
   }
