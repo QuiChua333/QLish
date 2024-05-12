@@ -5,12 +5,13 @@ class AppRoutes {
   static const String INTRO = "/intro";
   static const String SIGNUP = "/signup";
   static const String SIGNIN = "/signin";
+  static const String FORGET_PASSWORD = "/forgetpassword";
   static const String OVERVIEW_PROFILE = "/overviewprofile";
   static const String EMAIL_VERIFY = "/emailverify";
   static const String EDIT_PROFILE = "/edit_profile";
   static const String CHANGE_PASSWORD = "/changepassword";
   static const String CHANGE_NAME = "/changename";
-  static const String BOTTOM_NAVIGATION = "/bottomnavigation";
+  static const String DASHBOARD = "/dashboard";
   static const String IPA = "/ipa";
   static const String LEARNING_VOCABULARY = "/learningvocabulary";
   static const String LEARNING_VOCABULARY_ROUND = "/learningvocabularyround";

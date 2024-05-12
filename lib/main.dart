@@ -1,10 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:qlish/firebase_options.dart';
 import 'package:qlish/src/core/utils/constants/app_colors.dart';
 import 'package:qlish/src/core/utils/constants/app_pages.dart';
 import 'package:qlish/src/core/utils/constants/app_routes.dart';
+import 'package:qlish/src/core/utils/repository/authentication_repository/authentication_repository.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  Get.put(AuthenticationRepository());
   runApp(const MyApp());
 }
 
@@ -35,7 +41,7 @@ class MyApp extends StatelessWidget {
               bodyMedium: TextStyle(color: AppColors.textColor, fontSize: 15),
           )
       ),
-      initialRoute: AppRoutes.DETAIL_RANK,
+      initialRoute: AppRoutes.INTRO,
       getPages: AppPages.pages,
     );
   }

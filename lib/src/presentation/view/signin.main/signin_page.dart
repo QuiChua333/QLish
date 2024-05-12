@@ -15,8 +15,7 @@ import 'signin_controller.dart';
 
 class SignInPage extends StatelessWidget{
   SignInPage({super.key});
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return  GetBuilder<SignInController>(
@@ -51,11 +50,11 @@ class SignInPage extends StatelessWidget{
                                 padding: EdgeInsets.only(bottom: 8),
                                 child: Align(
                                   alignment: Alignment.centerLeft,
-                                    child: Text('Tên đăng nhập', style: TextStyle(),)
+                                    child: Text('Email', style: TextStyle(),)
                                 ),
                               ),
                               NormalInput(
-                                controller: usernameController, hint: "Nhập tên đăng nhập", borderRadius: 24, paddingV: 10,
+                                controller: controller.emailController, hint: "Nhập email", borderRadius: 24, paddingV: 10,
                               ),
                             ],
                           ),
@@ -70,7 +69,22 @@ class SignInPage extends StatelessWidget{
                                 ),
                               ),
                               InputPassword(
-                                controller: passwordController, hint: "Nhập mật khẩu", borderRadius: 24, paddingV: 10,
+                                controller: controller.passwordController, hint: "Nhập mật khẩu", borderRadius: 24, paddingV: 10,
+                              ),
+                              SizedBox(height: 12 ,),
+                              Align(
+                                alignment: Alignment.centerRight,
+                                child: InkWell(
+                                    onTap: (){
+                                      Get.toNamed(AppRoutes.FORGET_PASSWORD);
+                                    },
+                                    child: const Text('Quên mật khẩu?', style: TextStyle(
+
+                                        decorationColor: Color(0xffFFBA1A),
+                                        fontWeight: FontWeight.w500,
+                                        color: Color(0xffFFBA1A)
+                                    ),)
+                                ),
                               ),
                             ],
                           ),
@@ -84,8 +98,10 @@ class SignInPage extends StatelessWidget{
                           Container(
                             margin: EdgeInsets.only(top: 24),
                             child: CustomButton(
-                              onTap: () {
-                
+                              onTap: () async {
+                                String email = controller.emailController.text.trim();
+                                String password = controller.passwordController.text.trim();
+                                await controller.signIn(email, password);
                               },
                               text: 'Đăng nhập',
                               textColor: Color(0xffF3AE29),

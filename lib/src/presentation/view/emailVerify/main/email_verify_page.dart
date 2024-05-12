@@ -5,12 +5,17 @@ import 'package:get/get.dart';
 import 'package:qlish/src/core/utils/constants/app_colors.dart';
 import 'package:qlish/src/presentation/component/button/button.dart';
 import 'package:qlish/src/presentation/component/input/normal_input.dart';
+import 'package:qlish/src/presentation/view/emailVerify/main/email_verify_controller.dart';
 
 class EmailVerifyPage extends StatelessWidget {
   EmailVerifyPage({Key? key}) : super(key: key);
   TextEditingController codeController = TextEditingController();
+
+
+
   @override
   Widget build(BuildContext context) {
+    Get.put(EmailVerifyController());
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(
@@ -32,22 +37,38 @@ class EmailVerifyPage extends StatelessWidget {
                   const Text('Q', style: TextStyle(fontSize:70,color: Color(0xffFFBA1A), fontFamily: 'Rowdies', fontWeight: FontWeight.w700),),
                   const Text('LISH', style: TextStyle(fontSize: 70,color: Color(0xffFFBA1A), fontFamily: 'Rowdies', fontWeight: FontWeight.w700, height: 1),),
                   Container(
-                    margin: EdgeInsets.only(top: Get.height*0.1),
+                    margin: const EdgeInsets.only(top: 40),
                     child: Column(
                       children: [
-                        Column(
+                        const Column(
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.only(bottom: 8),
-                              child: Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text('Nhập mã xác thực', style: TextStyle(),)
-                              ),
-                            ),
-                            NormalInput(
-                              controller: codeController, hint: "Code", borderRadius: 24, paddingV: 10,
-                            ),
+                            Icon(Icons.mail_outline_rounded, size: 60, color: Color(0xff444444),),
+                            SizedBox(height: 20,),
+                            Text("Vui lòng xác minh email của bạn", style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),),
+                            SizedBox(height: 24,),
+                            Text("Một liên kết xác minh email đã gửi đến email của bạn. Vui lòng kiểm tra và truy cập liên kết để xác minh email!", textAlign: TextAlign.center,),
+                            SizedBox(height: 16,),
+                            Text("Nếu ứng dụng không chuyển trang sau khi xác minh, bấm vào nút tiếp tục bên dưới",textAlign: TextAlign.center,)
                           ],
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 40),
+                          child: Column(
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.only(top: 24),
+                                child: CustomButton(
+                                  onTap: () {
+
+                                  },
+                                  text: 'Tiếp tục',
+                                  textColor: const Color(0xffF3AE29),
+                                  textWeight: FontWeight.w700,
+                                  borderRadius: 40,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                         Padding(
                           padding: EdgeInsets.only(top: 12),
@@ -67,25 +88,7 @@ class EmailVerifyPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.only(top: Get.height*0.08),
-                    child: Column(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(top: 24),
-                          child: CustomButton(
-                            onTap: () {
 
-                            },
-                            text: 'Xác nhận',
-                            textColor: const Color(0xffF3AE29),
-                            textWeight: FontWeight.w700,
-                            borderRadius: 40,
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
                 ],
               ),
             ),

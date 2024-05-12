@@ -5,8 +5,8 @@ import 'package:qlish/src/core/utils/constants/app_colors.dart';
 import 'package:qlish/src/presentation/view/edit_profile/main/edit_profile_page.dart';
 import 'package:qlish/src/presentation/view/home/main/home_page.dart';
 
-class NavigationMenu extends StatelessWidget {
-  NavigationMenu({Key? key}) : super(key: key);
+class DashBoard extends StatelessWidget {
+  DashBoard({Key? key}) : super(key: key);
   final controller = Get.put(NavigationController());
   @override
   Widget build(BuildContext context) {

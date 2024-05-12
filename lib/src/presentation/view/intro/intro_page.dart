@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qlish/src/core/utils/constants/app_colors.dart';
 import 'package:qlish/src/core/utils/constants/app_routes.dart';
+import 'package:qlish/src/core/utils/repository/authentication_repository/authentication_repository.dart';
 import 'package:qlish/src/presentation/component/button/button.dart';
 
 class IntroPage extends StatelessWidget {

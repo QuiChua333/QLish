@@ -1,26 +1,29 @@
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get.dart';
+import 'package:flutter/widgets.dart';
 import 'package:qlish/src/core/utils/constants/app_colors.dart';
-
+typedef StringFunction = String? Function(String? value);
 class NormalInput extends StatelessWidget {
   NormalInput(
       {Key? key,
       this.hint,
       required this.controller,
       this.borderRadius,
-      this.paddingV})
+      this.paddingV,
+       this.validator
+      })
       : super(key: key);
   String? hint;
   TextEditingController controller;
   double? borderRadius;
   double? paddingV;
+  StringFunction? validator;
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-        child: TextFormField(
+    return TextFormField(
       controller: controller,
       cursorColor: AppColors.mainColor,
       decoration: InputDecoration(
@@ -36,6 +39,7 @@ class NormalInput extends StatelessWidget {
         hintText: hint ?? "Nhập vào đây",
         hintStyle: TextStyle(fontSize: 14, color: Color(0xffB9BBC0)),
       ),
-    ));
+      validator: validator,
+    );
   }
 }

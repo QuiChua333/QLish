@@ -23,13 +23,13 @@ class IPAPage extends StatelessWidget {
               icon: const Icon(Icons.arrow_back),
             ),
           ),
-          body: Container(
-            padding: const EdgeInsets.only(bottom: 16),
-            width: Get.width,
-            child:  SingleChildScrollView(
-              child: Column(
+          body: SingleChildScrollView(
+            child: Container(
+              padding: const EdgeInsets.only(bottom: 16),
+              width: Get.width,
+              child:  Column(
                 children: [
-                  Center(
+                  const Center(
                     child: Column(
                       children: [
                         SizedBox(height: 40,),
@@ -47,12 +47,12 @@ class IPAPage extends StatelessWidget {
                         Text(
                           "Tập nghe và phát âm các âm trong",
                           style: TextStyle(
-                              fontSize: 14,),
+                            fontSize: 14,),
                         ),
                         Text(
                           "tiếng anh",
                           style: TextStyle(
-                              fontSize: 14,),
+                            fontSize: 14,),
                         ),
                       ],
                     ),
@@ -71,25 +71,21 @@ class IPAPage extends StatelessWidget {
                       children: [
                         Text("Nguyên âm", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),),
                         // point
-                        Container(
-                          margin: EdgeInsets.only(top: 16),
-                          child: Expanded(
-                            child: GridView.builder(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3,
-                                mainAxisSpacing: 8,
-                                crossAxisSpacing: 8,
-                                childAspectRatio: (1 / 0.7),
-                              ),
-                              itemCount: 8,
-                              itemBuilder: (context,index) {
-                                return IPAComponent();
-                              },
-                            ),
-                          )
-                        )
+                        SizedBox(height: 16,),
+                        GridView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            mainAxisSpacing: 8,
+                            crossAxisSpacing: 8,
+                            childAspectRatio: (1 / 0.7),
+                          ),
+                          itemCount: 8,
+                          itemBuilder: (context,index) {
+                            return IPAComponent();
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -107,25 +103,21 @@ class IPAPage extends StatelessWidget {
                       children: [
                         const Text("Phụ âm", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),),
                         // point
-                        Container(
-                            margin: const EdgeInsets.only(top: 16),
-                            child: Expanded(
-                              child: GridView.builder(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 3,
-                                    mainAxisSpacing: 8,
-                                    crossAxisSpacing: 8,
-                                  childAspectRatio: (1 / 0.7),
-                                ),
-                                itemCount: 8,
-                                itemBuilder: (context,index) {
-                                  return IPAComponent();
-                                },
-                              ),
-                            )
-                        )
+                        SizedBox(height: 16,),
+                        GridView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            mainAxisSpacing: 8,
+                            crossAxisSpacing: 8,
+                            childAspectRatio: (1 / 0.7),
+                          ),
+                          itemCount: 8,
+                          itemBuilder: (context,index) {
+                            return IPAComponent();
+                          },
+                        ),
                       ],
                     ),
                   ),

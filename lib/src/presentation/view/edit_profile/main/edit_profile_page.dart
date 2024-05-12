@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qlish/src/core/utils/constants/app_colors.dart';
+import 'package:qlish/src/core/utils/repository/authentication_repository/authentication_repository.dart';
 import 'package:qlish/src/presentation/component/button/button.dart';
 import 'package:qlish/src/presentation/view/edit_profile/widget/form_info.dart';
 
@@ -108,8 +109,9 @@ class EditProfilePage extends StatelessWidget {
                       textColor: Colors.white,
                       textWeight: FontWeight.w500,
                       borderRadius: 8,
-                      onTap: () {
-                        print("Đăng xuất nè");
+                      onTap: () async {
+                        await AuthenticationRepository.instance
+                            .logout();
                       },
                     ),
                   )

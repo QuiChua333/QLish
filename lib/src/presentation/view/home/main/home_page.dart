@@ -7,17 +7,20 @@ import 'package:get/get.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:qlish/src/core/utils/constants/app_colors.dart';
 import 'package:qlish/src/core/utils/constants/app_routes.dart';
+import 'package:qlish/src/core/utils/repository/authentication_repository/authentication_repository.dart';
 import 'package:qlish/src/presentation/component/button/button.dart';
 import 'package:qlish/src/presentation/view/home/widget/course.dart';
+import 'package:qlish/src/presentation/view/navigation_menu/dastboard.dart';
 
 import 'home_controller.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
+  final controller = Get.put(HomeController());
+
   @override
   Widget build(BuildContext context) {
-    Get.lazyPut<HomeController>(() => HomeController());
     return GetBuilder<HomeController>(
       builder: (controller) {
         return SafeArea(
@@ -70,183 +73,201 @@ class HomePage extends StatelessWidget {
                       onPressed: () {}, icon: FaIcon(FontAwesomeIcons.bell)),
                 ],
               ),
-              body: Container(
-                margin: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                child: Column(
-                  children: [
-                    Container(
-                        width: Get.width,
-                        padding: EdgeInsets.all(20),
-                        decoration: const BoxDecoration(
-                            image: DecorationImage(
-                                image:
-                                    AssetImage('assets/images/card_home.png'),
-                                fit: BoxFit.fill)),
+              body: SingleChildScrollView(
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                  child: Column(
+                    children: [
+                      Container(
+                          width: Get.width,
+                          padding: EdgeInsets.all(20),
+                          decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                  image:
+                                      AssetImage('assets/images/card_home.png'),
+                                  fit: BoxFit.fill)),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  CircularPercentIndicator(
+                                    radius: 36,
+                                    lineWidth: 6,
+                                    animation: true,
+                                    percent: 0.4,
+                                    center: const Text(
+                                      "75%",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xff3FB8D2),
+                                          fontSize: 16),
+                                    ),
+                                    circularStrokeCap: CircularStrokeCap.round,
+                                    progressColor: const Color(0xff3FB8D2),
+                                    backgroundColor: const Color(0xffD0EFFF),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(left: 16),
+                                    child: const Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Từ vựng",
+                                          style: TextStyle(
+                                              color: Color(0xffBCB4B5)),
+                                        ),
+                                        Text("Vòng 3: Động vật",
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w600)),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+                                        Text(
+                                          "Tiếp tục hành trình của bạn thôi nào!",
+                                          style: TextStyle(
+                                              color: Color(0xffBCB4B5),
+                                              fontSize: 12),
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Container(
+                                  width: 160,
+                                  height: 45,
+                                  margin: const EdgeInsets.only(
+                                      top: 20, bottom: 28),
+                                  child: CustomButton(
+                                    onTap: ()  {
+
+                                    },
+                                    text: "Học tiếp",
+                                    borderRadius: 20,
+                                    textWeight: FontWeight.w600,
+                                    textColor: Colors.white,
+                                    backgroundColor: const Color(0xff3FB8D2),
+                                  ),
+                                ),
+                              )
+                            ],
+                          )),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Container(
+                        height: 45,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            border:
+                                Border.all(width: 1, color: Color(0xffDDDDDD)),
+                            color: Colors.white),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.search,
+                                  color: Color(0xff6A9FDD),
+                                )),
+                            const Expanded(
+                              child: TextField(
+                                decoration: InputDecoration.collapsed(
+                                  hintText: 'Tra từ điển',
+                                  hintStyle: TextStyle(
+                                      fontSize: 14, color: Color(0xffB9BBC0)),
+                                  border: InputBorder.none,
+                                ),
+                                cursorColor: Color(0xff6A9FDD),
+                              ),
+                            ),
+                            IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.mic,
+                                  color: Color(0xff6A9FDD),
+                                ))
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(top: Get.height * 0.05),
+                        padding: EdgeInsets.symmetric(horizontal: 12),
                         child: Column(
                           children: [
                             Row(
                               children: [
-                                CircularPercentIndicator(
-                                  radius: 36,
-                                  lineWidth: 6,
-                                  animation: true,
-                                  percent: 0.4,
-                                  center: const Text(
-                                    "75%",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                        color: Color(0xff3FB8D2),
-                                        fontSize: 16),
-                                  ),
-                                  circularStrokeCap: CircularStrokeCap.round,
-                                  progressColor: const Color(0xff3FB8D2),
-                                  backgroundColor: const Color(0xffD0EFFF),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.only(left: 16),
-                                  child: const Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Từ vựng",
-                                        style:
-                                            TextStyle(color: Color(0xffBCB4B5)),
-                                      ),
-                                      Text("Vòng 3: Động vật",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w600)),
-                                      SizedBox(
-                                        height: 8,
-                                      ),
-                                      Text(
-                                        "Tiếp tục hành trình của bạn thôi nào!",
-                                        style: TextStyle(
-                                            color: Color(0xffBCB4B5),
-                                            fontSize: 12),
-                                      )
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Container(
-                                width: 160,
-                                height: 45,
-                                margin:
-                                    const EdgeInsets.only(top: 20, bottom: 28),
-                                child: CustomButton(
-                                  onTap: () {},
-                                  text: "Học tiếp",
-                                  borderRadius: 20,
-                                  textWeight: FontWeight.w600,
-                                  textColor: Colors.white,
-                                  backgroundColor: const Color(0xff3FB8D2),
-                                ),
-                              ),
-                            )
-                          ],
-                        )),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    Container(
-                      height: 45,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
-                          border:
-                              Border.all(width: 1, color: Color(0xffDDDDDD)),
-                          color: Colors.white),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.search,
-                                color: Color(0xff6A9FDD),
-                              )),
-                          const Expanded(
-                            child: TextField(
-                              decoration: InputDecoration.collapsed(
-                                hintText: 'Tra từ điển',
-                                hintStyle: TextStyle(
-                                    fontSize: 14, color: Color(0xffB9BBC0)),
-                                border: InputBorder.none,
-                              ),
-                              cursorColor: Color(0xff6A9FDD),
-                            ),
-                          ),
-                          IconButton(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.mic,
-                                color: Color(0xff6A9FDD),
-                              ))
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: Get.height * 0.05),
-                      padding: EdgeInsets.symmetric(horizontal: 12),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Expanded(
+                                Expanded(
+                                    child: InkWell(
+                                      onTap: () {
+                                        Get.toNamed(AppRoutes.LEARNING_VOCABULARY);
+                                      },
                                   child: Course(
-                                assetImage: 'assets/images/dictionary.png',
-                                name: "Học từ vựng",
+                                    assetImage: 'assets/images/dictionary.png',
+                                    name: "Học từ vựng",
                                     description: "1000 từ vựng",
                                     backgroundColor: Color(0xffFF96BC),
                                     bottomSideColor: Color(0xffDF87A7),
-                              )),
-                              SizedBox(
-                                width: 24,
-                              ),
-                              Expanded(
-                                  child: Course(
-                                    assetImage: 'assets/images/ipa.png',
-                                    name: "Phiên âm IPA",
-                                    description: "1000 từ vựng",
-                                    backgroundColor: Color(0xff73AEF3),
-                                    bottomSideColor: Color(0xff6A9FDD)
-                                  )),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 24,
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                  child: Course(
-                                      assetImage: 'assets/images/communication.png',
-                                      name: "Học câu giao tiếp",
-                                      description: "1000 từ vựng",
-                                      backgroundColor: Color(0xffF0CD51),
-                                      bottomSideColor: Color(0xffDEBD4A)
-                                  )),
-                              SizedBox(
-                                width: 24,
-                              ),
-                              Expanded(
-                                  child: Course(
-                                      assetImage: 'assets/images/vocabulary_game.png',
-                                      name: "Game từ vựng",
-                                      description: "1000 từ vựng",
-                                      backgroundColor: Color(0xffF4B295),
-                                      bottomSideColor: Color(0xffDAA791)
-                                  )),
-                            ],
-                          )
-                        ],
-                      ),
-                    )
-                  ],
+                                  ),
+                                )),
+                                const SizedBox(
+                                  width: 24,
+                                ),
+                                Expanded(
+                                    child: InkWell(
+                                      onTap: () {
+                                        Get.toNamed(AppRoutes.IPA);
+                                      },
+                                      child: Course(
+                                          assetImage: 'assets/images/ipa.png',
+                                          name: "Phiên âm IPA",
+                                          description: "1000 từ vựng",
+                                          backgroundColor: Color(0xff73AEF3),
+                                          bottomSideColor: Color(0xff6A9FDD)),
+                                    )),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 24,
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                    child: InkWell(
+                                      onTap: () {
+                                        Get.toNamed(AppRoutes.LEARNING_SENTENCE);
+                                      },
+                                      child: Course(
+                                          assetImage:
+                                              'assets/images/communication.png',
+                                          name: "Học câu giao tiếp",
+                                          description: "1000 từ vựng",
+                                          backgroundColor: Color(0xffF0CD51),
+                                          bottomSideColor: Color(0xffDEBD4A)),
+                                    )),
+                                SizedBox(
+                                  width: 24,
+                                ),
+                                Expanded(
+                                    child: Course(
+                                        assetImage:
+                                            'assets/images/vocabulary_game.png',
+                                        name: "Game từ vựng",
+                                        description: "1000 từ vựng",
+                                        backgroundColor: Color(0xffF4B295),
+                                        bottomSideColor: Color(0xffDAA791))),
+                              ],
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               )),
         );

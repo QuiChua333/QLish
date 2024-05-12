@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "114578249167",
+    "project_id": "qlish-8296f",
+    "storage_bucket": "qlish-8296f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114578249167:android:07f984cf9e37c94ab16eba",
+        "android_client_info": {
+          "package_name": "com.example.qlish"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiM3B6EHXkdGOgEVo2SvevGP3sJ1Q2SNI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
