@@ -8,6 +8,7 @@ import 'package:qlish/src/core/utils/constants/app_routes.dart';
 import 'package:qlish/src/core/utils/firebase/firebase_auth_service.dart';
 import 'package:qlish/src/core/utils/toast_message/toast_message.dart';
 import 'package:qlish/src/core/utils/validation/Validate.dart';
+import 'package:qlish/src/data/models/user.dart';
 import 'package:qlish/src/presentation/component/button/button.dart';
 import 'package:qlish/src/presentation/component/input/input_password.dart';
 import 'package:qlish/src/presentation/component/input/normal_input.dart';
@@ -136,6 +137,7 @@ class SignUpPage extends StatelessWidget{
                                   if (_formKey.currentState!.validate()) {
                                     String email = controller.email.text.trim();
                                     String password = controller.password.text.trim();
+                                    String name = controller.fullName.text.trim();
                                     // User? user = await _auth.signUpWithEmailAndPassword(email, password);
                                     // if (user!=null) {
                                     //   ToastMessage.show('Đăng ký thành công!', ToastMessage.SUCCESS);
@@ -145,7 +147,8 @@ class SignUpPage extends StatelessWidget{
                                     //
                                     // }
                                     // else print('Some error happen');
-                                    controller.registerUser(email, password);
+                                    final user = UserModel(email: email, password: password, name: name);
+                                    controller.createUser(user);
 
                                   }
                                 },

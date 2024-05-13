@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qlish/src/core/utils/constants/app_colors.dart';
+import 'package:qlish/src/core/utils/constants/app_routes.dart';
 import 'package:qlish/src/core/utils/repository/authentication_repository/authentication_repository.dart';
 import 'package:qlish/src/presentation/component/button/button.dart';
 import 'package:qlish/src/presentation/view/edit_profile/widget/form_info.dart';
@@ -44,7 +45,7 @@ class EditProfilePage extends StatelessWidget {
                               )
                             ],
                             shape: BoxShape.circle,
-                            image: DecorationImage(
+                            image: const DecorationImage(
                               fit: BoxFit.cover,
                               image: NetworkImage('https://cdn.pixabay.com/photo/2023/11/20/23/06/woman-8402052_1280.jpg')
                             )
@@ -76,7 +77,7 @@ class EditProfilePage extends StatelessWidget {
                             content: "Huỳnh Ngọc Quí", 
                             isChange: true, 
                             onTap: () {
-                              print("In thay đổi");
+                              Get.toNamed(AppRoutes.CHANGE_NAME);
                             }
                         ),
                         const SizedBox(height: 16,),
@@ -90,7 +91,7 @@ class EditProfilePage extends StatelessWidget {
                             content: "●●●●●●●●●●",
                             isChange: true,
                             onTap: () {
-                              print("In thay đổi");
+                              Get.toNamed(AppRoutes.CHANGE_PASSWORD);
                             }
                         ),
                         const SizedBox(height: 16,),
