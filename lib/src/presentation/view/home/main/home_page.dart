@@ -8,6 +8,7 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:qlish/src/core/utils/constants/app_colors.dart';
 import 'package:qlish/src/core/utils/constants/app_routes.dart';
 import 'package:qlish/src/core/utils/repository/authentication_repository/authentication_repository.dart';
+import 'package:qlish/src/data/models/user.dart';
 import 'package:qlish/src/presentation/component/button/button.dart';
 import 'package:qlish/src/presentation/view/home/widget/course.dart';
 import 'package:qlish/src/presentation/view/navigation_menu/dastboard.dart';
@@ -21,14 +22,15 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return GetBuilder<HomeController>(
-      builder: (controller) {
+      builder: (_) {
         return SafeArea(
           child: Scaffold(
               appBar: AppBar(
                 centerTitle: true,
                 title: Container(
-                  child: const Row(
+                  child:  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Row(
@@ -42,7 +44,7 @@ class HomePage extends StatelessWidget {
                             width: 6,
                           ),
                           Text(
-                            "100",
+                            controller.user.name,
                             style: TextStyle(
                                 color: Color(0xffFEA832), fontSize: 18),
                           )
@@ -59,7 +61,7 @@ class HomePage extends StatelessWidget {
                             width: 6,
                           ),
                           Text(
-                            "100",
+                            '100',
                             style: TextStyle(
                                 color: Color(0xffFEA832), fontSize: 18),
                           )
@@ -84,7 +86,7 @@ class HomePage extends StatelessWidget {
                           decoration: const BoxDecoration(
                               image: DecorationImage(
                                   image:
-                                      AssetImage('assets/images/card_home.png'),
+                                  AssetImage('assets/images/card_home.png'),
                                   fit: BoxFit.fill)),
                           child: Column(
                             children: [
@@ -96,7 +98,7 @@ class HomePage extends StatelessWidget {
                                     animation: true,
                                     percent: 0.4,
                                     center: const Text(
-                                      "75%",
+                                      '100',
                                       style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           color: Color(0xff3FB8D2),
@@ -110,7 +112,7 @@ class HomePage extends StatelessWidget {
                                     margin: EdgeInsets.only(left: 16),
                                     child: const Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           "Từ vựng",
@@ -164,7 +166,7 @@ class HomePage extends StatelessWidget {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(100),
                             border:
-                                Border.all(width: 1, color: Color(0xffDDDDDD)),
+                            Border.all(width: 1, color: Color(0xffDDDDDD)),
                             color: Colors.white),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -207,14 +209,14 @@ class HomePage extends StatelessWidget {
                                       onTap: () {
                                         Get.toNamed(AppRoutes.LEARNING_VOCABULARY);
                                       },
-                                  child: Course(
-                                    assetImage: 'assets/images/dictionary.png',
-                                    name: "Học từ vựng",
-                                    description: "1000 từ vựng",
-                                    backgroundColor: Color(0xffFF96BC),
-                                    bottomSideColor: Color(0xffDF87A7),
-                                  ),
-                                )),
+                                      child: Course(
+                                        assetImage: 'assets/images/dictionary.png',
+                                        name: "Học từ vựng",
+                                        description: "1000 từ vựng",
+                                        backgroundColor: Color(0xffFF96BC),
+                                        bottomSideColor: Color(0xffDF87A7),
+                                      ),
+                                    )),
                                 const SizedBox(
                                   width: 24,
                                 ),
@@ -244,7 +246,7 @@ class HomePage extends StatelessWidget {
                                       },
                                       child: Course(
                                           assetImage:
-                                              'assets/images/communication.png',
+                                          'assets/images/communication.png',
                                           name: "Học câu giao tiếp",
                                           description: "1000 từ vựng",
                                           backgroundColor: Color(0xffF0CD51),
@@ -256,7 +258,7 @@ class HomePage extends StatelessWidget {
                                 Expanded(
                                     child: Course(
                                         assetImage:
-                                            'assets/images/vocabulary_game.png',
+                                        'assets/images/vocabulary_game.png',
                                         name: "Game từ vựng",
                                         description: "1000 từ vựng",
                                         backgroundColor: Color(0xffF4B295),
@@ -267,7 +269,7 @@ class HomePage extends StatelessWidget {
                         ),
                       )
                     ],
-                  ),
+                  )
                 ),
               )),
         );

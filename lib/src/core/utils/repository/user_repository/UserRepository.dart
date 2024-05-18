@@ -21,4 +21,10 @@ class UserRepository extends GetxController {
       print(error.toString());
     });
   }
+
+  Future<UserModel> getUserDetail (String email) async {
+    final snapshot = await _db.collection('user').where('email', isEqualTo: email ).get();
+    final userData = snapshot.docs.map((e) => UserModel.fromFirebase(e)).single;
+    return userData;
+  }
 }

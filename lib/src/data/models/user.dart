@@ -1,4 +1,6 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 const defaultAvatar = 'https://static.vecteezy.com/system/resources/previews/009/292/244/original/default-avatar-icon-of-social-media-user-vector.jpg';
 class UserModel {
   final String? id;
@@ -8,6 +10,9 @@ class UserModel {
   final String rank;
   final int score;
   final String avatar;
+
+
+
 
   const UserModel({
     this.id,
@@ -19,6 +24,7 @@ class UserModel {
      this.avatar = defaultAvatar,
   });
 
+
   toJson() {
     return {
       "email": email,
@@ -29,4 +35,17 @@ class UserModel {
       "avatar": avatar,
     };
   }
+  factory UserModel.fromFirebase(DocumentSnapshot snapshot) {
+    var data = snapshot.data() as Map<String, dynamic>;
+    return UserModel(
+      id: data["id"],
+      name: data["name"],
+      email: data["email"],
+      avatar: data["avatar"],
+      password: data["password"],
+      rank: data['rank'],
+      score: data['score'],
+    );
+  }
+
 }
