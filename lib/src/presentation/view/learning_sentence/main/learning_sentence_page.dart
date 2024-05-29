@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:qlish/src/core/utils/constants/app_colors.dart';
 import 'package:qlish/src/presentation/component/button/button.dart';
 import 'package:qlish/src/presentation/view/learning_sentence/widget/sentence_topic_vocabulary.dart';
-import 'package:qlish/src/presentation/view/learning_vocabulary/widget/card_topic_vocabulary.dart';
 
 class LearningSentencePage extends StatelessWidget {
   LearningSentencePage({Key? key}) : super(key: key);

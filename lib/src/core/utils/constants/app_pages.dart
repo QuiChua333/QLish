@@ -7,6 +7,7 @@ import 'package:qlish/src/presentation/view/detail_rank/main/detail_rank_page.da
 import 'package:qlish/src/presentation/view/edit_profile/main/edit_profile_page.dart';
 import 'package:qlish/src/presentation/view/emailVerify/main/email_verify_binding.dart';
 import 'package:qlish/src/presentation/view/emailVerify/main/email_verify_page.dart';
+import 'package:qlish/src/presentation/view/flashcard/flashcard_page.dart';
 import 'package:qlish/src/presentation/view/forget_password/main/forget_password_page.dart';
 import 'package:qlish/src/presentation/view/ipa/main/ipa_page.dart';
 import 'package:qlish/src/presentation/view/learning_sentence/main/learning_sentence_page.dart';
@@ -19,6 +20,8 @@ import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/learn
 import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/learning_vocabulary_round_page.dart';
 import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/practice_vocabulary_page.dart';
 import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/result_vocabulary_page.dart';
+import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/study_vocabulary_round_page.dart';
+import 'package:qlish/src/presentation/view/learning_vocabulary_round/widget/flash_card.dart';
 import 'package:qlish/src/presentation/view/navigation_menu/dastboard.dart';
 import 'package:qlish/src/presentation/view/overview_profile/main/overview_profile_page.dart';
 import 'package:qlish/src/presentation/view/overview_rank/main/overview_rank_page.dart';
@@ -137,6 +140,11 @@ class AppPages {
     GetPage(
       name: AppRoutes.DETAIL_RANK,
       page: () => DetailRankPage(),
+    ),
+
+    GetPage(
+      name: AppRoutes.STUDY_VOCABULARY_ROUND,
+      page: () => StudyVocabularyRoundPage()
     ),
 
   ];

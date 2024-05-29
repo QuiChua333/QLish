@@ -12,6 +12,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/state_manager.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:qlish/src/core/utils/constants/app_colors.dart';
+import 'package:qlish/src/core/utils/constants/app_routes.dart';
 import 'package:qlish/src/presentation/view/learning_vocabulary/widget/Topic.dart';
 
 class CardTopicVocabulary extends StatelessWidget  {
@@ -134,41 +135,46 @@ class CardTopicVocabulary extends StatelessWidget  {
                 preferredSize: Size.fromRadius(10),
               ),
               contentChild: (context, data) {
-                return  Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Vòng 1", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),),
-                        SizedBox(height: 4,),
-                        Row(
-                          children: [
-                            Text("Bài học: "),
-                            Text("Chưa hoàn thành", style: TextStyle(color: Color(0xffF3AE29)),),
-                          ],
-                        ),
-                        SizedBox(height: 4,),
-                        Row(
-                          children: [
-                            Text("Luyện tập: "),
-                            Text("Chưa hoàn thành",style: TextStyle(color: Color(0xffF3AE29))),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        IconButton(
-                            onPressed: (){},
-                            icon: FaIcon(FontAwesomeIcons.ellipsisVertical),
-                        ),
-                        SizedBox(height: 12,),
-                        SvgPicture.asset('assets/images/talk.svg', width: 20,),
-                      ],
-                    )
-                  ],
+                return  InkWell(
+                  onTap: () {
+                    Get.toNamed(AppRoutes.STUDY_VOCABULARY_ROUND);
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Vòng 1", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),),
+                          SizedBox(height: 4,),
+                          Row(
+                            children: [
+                              Text("Bài học: "),
+                              Text("Chưa hoàn thành", style: TextStyle(color: Color(0xffF3AE29)),),
+                            ],
+                          ),
+                          SizedBox(height: 4,),
+                          Row(
+                            children: [
+                              Text("Luyện tập: "),
+                              Text("Chưa hoàn thành",style: TextStyle(color: Color(0xffF3AE29))),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          IconButton(
+                              onPressed: (){},
+                              icon: FaIcon(FontAwesomeIcons.ellipsisVertical),
+                          ),
+                          SizedBox(height: 12,),
+                          SvgPicture.asset('assets/images/talk.svg', width: 20,),
+                        ],
+                      )
+                    ],
+                  ),
                 );
               },
               contentRoot: (context, data) {

@@ -27,4 +27,8 @@ class AppRoutes {
   static const String DETAIL_RANK = "/detailrank";
 
 
+  static const String STUDY_VOCABULARY_ROUND = "/studyvocabularyround";
+
+
+
 }
