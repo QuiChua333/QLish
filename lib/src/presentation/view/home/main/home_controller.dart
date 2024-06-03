@@ -6,7 +6,7 @@ import 'package:qlish/src/data/models/user.dart';
 
 class HomeController extends GetxController {
   final _userRepo = Get.put(UserRepository());
-  late UserModel user = UserModel(email: '', password: '', name: '');
+  late UserModel user = UserModel(email: '', name: '', id: '', password: '');
 
   @override
   void onInit() async {
@@ -22,5 +22,6 @@ class HomeController extends GetxController {
        user = await _userRepo.getUserDetail(email);
     }
     else ToastMessage.show('Error', ToastMessage.ERROR);
+
   }
 }

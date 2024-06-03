@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:qlish/src/core/utils/constants/app_colors.dart';
-import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/learning_vocabulary_controller.dart';
+import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/learning_vocabulary_round_controller.dart';
 
 
 class PracticeVocabularyPage extends StatelessWidget {
   PracticeVocabularyPage({Key? key}) : super(key: key);
-  LearningVocabularyController controller = Get.find<LearningVocabularyController>();
+  LearningVocabularyRoundController controller = Get.find<LearningVocabularyRoundController>();
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<LearningVocabularyController>(
+    return GetBuilder<LearningVocabularyRoundController>(
         builder: (_) {
           return SafeArea(
             child: Scaffold(

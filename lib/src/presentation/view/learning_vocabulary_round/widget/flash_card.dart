@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:qlish/src/core/utils/constants/app_colors.dart';
 
 class FlashCard extends StatelessWidget  {
+  final String name;
+  FlashCard({super.key,  this.name = 'q'});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,7 +30,7 @@ class FlashCard extends StatelessWidget  {
             child: Image.asset('assets/images/fish.png',width: 170, fit: BoxFit.cover,),
           ),
           SizedBox(height: 10,),
-          Text('fish (n)', style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),),
+          Text('${name} (n)', style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),),
           SizedBox(height: 4,),
           Text('/fif/', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),),
           SizedBox(height: 10,),

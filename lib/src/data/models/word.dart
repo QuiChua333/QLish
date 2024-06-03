@@ -36,9 +36,9 @@ class WordModel {
     };
   }
   factory WordModel.fromFirebase(DocumentSnapshot snapshot) {
-    var data = snapshot.data() as Map<String, dynamic>;
+    var data = snapshot;
     return WordModel(
-      id: data["id"],
+      id: data.id,
       name: data["name"],
       mean: data["mean"],
       phonetic: data["phonetic"],

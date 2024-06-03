@@ -14,7 +14,7 @@ class UserModel {
 
 
 
-  const UserModel({
+   UserModel({
     this.id,
     required this.email,
     required this.password,
@@ -23,6 +23,8 @@ class UserModel {
      this.score = 0,
      this.avatar = defaultAvatar,
   });
+
+
 
 
   toJson() {
@@ -36,9 +38,9 @@ class UserModel {
     };
   }
   factory UserModel.fromFirebase(DocumentSnapshot snapshot) {
-    var data = snapshot.data() as Map<String, dynamic>;
+    var data = snapshot;
     return UserModel(
-      id: data["id"],
+      id: data.id,
       name: data["name"],
       email: data["email"],
       avatar: data["avatar"],
@@ -47,5 +49,7 @@ class UserModel {
       score: data['score'],
     );
   }
+
+
 
 }

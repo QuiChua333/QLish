@@ -16,11 +16,12 @@ import 'package:qlish/src/presentation/view/learning_sentence_round/main/learnin
 import 'package:qlish/src/presentation/view/learning_sentence_round/main/practice_sentence_page.dart';
 import 'package:qlish/src/presentation/view/learning_sentence_round/main/result_sentence_page.dart';
 import 'package:qlish/src/presentation/view/learning_vocabulary/main/learning_vocabulary_page.dart';
+import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/congratulation_round_view.dart';
 import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/learning_vocabulary_binding.dart';
 import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/learning_vocabulary_round_page.dart';
 import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/practice_vocabulary_page.dart';
 import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/result_vocabulary_page.dart';
-import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/study_vocabulary_round_page.dart';
+import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/learning_vocabulary_round_page.dart';
 import 'package:qlish/src/presentation/view/learning_vocabulary_round/widget/flash_card.dart';
 import 'package:qlish/src/presentation/view/navigation_menu/dastboard.dart';
 import 'package:qlish/src/presentation/view/overview_profile/main/overview_profile_page.dart';
@@ -98,6 +99,7 @@ class AppPages {
     GetPage(
       name: AppRoutes.LEARNING_VOCABULARY,
       page: () => LearningVocabularyPage(),
+      binding: LearningVocabularyBinding()
     ),
     GetPage(
       name: AppRoutes.LEARNING_VOCABULARY_ROUND,
@@ -142,10 +144,13 @@ class AppPages {
       page: () => DetailRankPage(),
     ),
 
+
     GetPage(
-      name: AppRoutes.STUDY_VOCABULARY_ROUND,
-      page: () => StudyVocabularyRoundPage()
+        name: AppRoutes.CONGRATULATION_VOCABULARY_ROUND,
+        page: () => CongratulationView()
     ),
+
+
 
   ];
 }

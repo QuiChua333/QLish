@@ -7,7 +7,7 @@ import 'package:qlish/src/core/utils/constants/app_colors.dart';
 import 'package:qlish/src/presentation/component/dialog/dialog.dart';
 import 'package:qlish/src/presentation/view/ipa/widget/ipa_component.dart';
 import 'package:qlish/src/presentation/view/learning_sentence_round/main/learning_sentence_controller.dart';
-import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/learning_vocabulary_controller.dart';
+import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/learning_vocabulary_round_controller.dart';
 import 'package:qlish/src/presentation/view/learning_vocabulary_round/widget/flash_card.dart';
 
 class PracticeSentencePage extends StatelessWidget {

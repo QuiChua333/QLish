@@ -9,7 +9,9 @@ import 'package:qlish/src/core/utils/repository/authentication_repository/authen
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   Get.put(AuthenticationRepository());
   runApp(const MyApp());
 }
