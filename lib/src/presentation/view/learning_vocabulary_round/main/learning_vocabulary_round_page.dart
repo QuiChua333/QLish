@@ -15,50 +15,16 @@ import 'package:qlish/src/presentation/view/learning_vocabulary_round/widget/fla
 
 class LearningVocabularyRoundPage extends StatefulWidget {
   LearningVocabularyRoundPage({super.key});
-  final controller = Get.put(LearningVocabularyRoundController());
+
   @override
   StudyVocabularyRoundState createState() => StudyVocabularyRoundState();
 }
 
 class StudyVocabularyRoundState extends State<LearningVocabularyRoundPage> with TickerProviderStateMixin {
 
-
-
-  List<Map<String,dynamic>> qqq = [
-  {
-  "name": "toilet",
-  "mean": "bồn cầu",
-  "phonetic": "/ˈtɔɪ.lət/",
-  "wordType": "n",
-  "wordTopicId": "0vGgR7QLVisr6XctyKVs",
-  "isSpeed": false,
-  "image": ""
-  },
-  {
-  "name": "bathtub",
-  "mean": "bồn tắm",
-  "phonetic": "/ˈbæθ.tʌb/",
-  "wordType": "n",
-  "wordTopicId": "0vGgR7QLVisr6XctyKVs",
-  "isSpeed": false,
-  "image": ""
-  },
-  {
-  "name": "towel",
-  "mean": "khăn",
-  "phonetic": "/ˈtaʊəl/",
-  "wordType": "n",
-  "wordTopicId": "0vGgR7QLVisr6XctyKVs",
-  "isSpeed": false,
-  "image": ""
-  },
-  ];
-  List<WordModel> allWord =  [WordModel(name: "toilet1", mean: "toilet", phonetic: "toilet", wordType: "toilet", wordTopicId: "toilet"),
-    WordModel(name: "toilet2", mean: "toilet", phonetic: "toilet", wordType: "toilet", wordTopicId: "toilet"),
-    WordModel(name: "toilet3", mean: "toilet", phonetic: "toilet", wordType: "toilet", wordTopicId: "toilet")];
-  List<WordModel> wordList = [WordModel(name: "toilet1", mean: "toilet", phonetic: "toilet", wordType: "toilet", wordTopicId: "toilet"),WordModel(name: "toilet2", mean: "toilet", phonetic: "toilet", wordType: "toilet", wordTopicId: "toilet"),WordModel(name: "toilet3", mean: "toilet", phonetic: "toilet", wordType: "toilet", wordTopicId: "toilet")];
-
-
+  final controller = Get.put(LearningVocabularyRoundController());
+  List<WordModel> allWord =Get.arguments['roundVocabulary'];
+  List<WordModel> wordList =Get.arguments['roundVocabulary'];
   Queue<WordModel> wordQueue = Queue();
   Queue<WordModel> laterQueue = Queue();
   Queue<WordModel> rememberQueue = Queue();
@@ -85,6 +51,7 @@ class StudyVocabularyRoundState extends State<LearningVocabularyRoundPage> with 
 
   @override
   void initState() {
+
     super.initState();
     wordQueue.addAll(wordList);
     initPositionCard();
@@ -192,6 +159,7 @@ class StudyVocabularyRoundState extends State<LearningVocabularyRoundPage> with 
             alignment: Alignment.bottomCenter,
             child: InkWell(
               onTap: (){
+
                 showDialog(context: context, builder: (context) => const CustomDialog());
               },
               child: Container(
@@ -292,7 +260,7 @@ class StudyVocabularyRoundState extends State<LearningVocabularyRoundPage> with 
                                         // _animationController.forward();
                                       },
                                       child:
-                                      Center(child: FlashCard(name:wordQueue.first.name))
+                                      Center(child: FlashCard(word:wordQueue.first))
                                            ),
                                 )
                             ),
@@ -385,7 +353,7 @@ class StudyVocabularyRoundState extends State<LearningVocabularyRoundPage> with 
                                         // _animationController2.forward();
                                       },
                                       child:
-                                      Center(child: FlashCard(name: wordQueue.first.name,))
+                                      Center(child: FlashCard(word: wordQueue.first,))
 
                                   ),
                                 )

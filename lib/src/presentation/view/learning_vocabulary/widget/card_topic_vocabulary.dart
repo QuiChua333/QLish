@@ -126,7 +126,11 @@ class CardTopicVocabulary extends StatelessWidget  {
             contentChild: (context, data) {
               return  InkWell(
                 onTap: () {
-                  Get.toNamed(AppRoutes.LEARNING_VOCABULARY_ROUND);
+                  Get.toNamed(AppRoutes.LEARNING_VOCABULARY_ROUND, arguments:{
+                  "roundStatus": data,
+                  "wordTopicName": wordTopicModel.wordTopicName,
+                  "roundVocabulary": controller.roundsController[data['round']-1]
+                  });
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

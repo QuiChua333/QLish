@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:qlish/src/core/utils/constants/app_colors.dart';
+import 'package:qlish/src/data/models/word.dart';
 
 class FlashCard extends StatelessWidget  {
-  final String name;
-  FlashCard({super.key,  this.name = 'q'});
+  final WordModel word;
+  FlashCard({super.key, required this.word });
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,14 +28,14 @@ class FlashCard extends StatelessWidget  {
             ],
           ),
           Center(
-            child: Image.asset('assets/images/fish.png',width: 170, fit: BoxFit.cover,),
+            child: Image.network('${word.image}',width: 170, fit: BoxFit.cover,),
           ),
           SizedBox(height: 10,),
-          Text('${name} (n)', style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),),
+          Text('${word.name} (n)', style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),),
           SizedBox(height: 4,),
-          Text('/fif/', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),),
+          Text('${word.phonetic}', style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),),
           SizedBox(height: 10,),
-          Text('con cá', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 24),),
+          Text('${word.mean}', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 24),),
           SizedBox(height: 16,),
           Text('Nhấn để nói', style: TextStyle( fontSize: 16),),
           IconButton(

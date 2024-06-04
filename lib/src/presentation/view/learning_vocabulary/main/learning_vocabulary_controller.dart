@@ -14,6 +14,7 @@ class LearningVocabularyController extends GetxController {
   final _wordTopicRepo = Get.put(WordTopicRepository());
   late List<WordTopicModel> allWordTopics = [];
   late int? indexActive = -1;
+  List<List<WordModel>> roundsController = [];
 
   @override
   void onInit() async {
@@ -80,7 +81,7 @@ class LearningVocabularyController extends GetxController {
       }
     }
     final List<Map<String,dynamic>> listRound = [];
-    print('learnnum' + '${learnNum}');
+    roundsController = rounds;
     for (int i=0; i<rounds.length; i++) {
       String status = '';
       status = i < learnNum ? 'Đã hoàn thành' : 'Chưa hoàn thành';

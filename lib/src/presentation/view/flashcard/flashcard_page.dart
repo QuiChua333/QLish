@@ -326,7 +326,7 @@ class FlashCardPageState extends State<FlashCardPage> with TickerProviderStateMi
                                         _animationController.reverse();
                                       },
                                       child:
-                                      FlashCard()
+                                      FlashCard(word: wordQueue.first,)
                                            ),
                                 )
                             ),
@@ -445,7 +445,7 @@ class FlashCardPageState extends State<FlashCardPage> with TickerProviderStateMi
                                         _animationController2.reverse();
                                       },
                                       child:
-                                      FlashCard()
+                                      FlashCard(word: wordQueue.first,)
 
                                   ),
                                 )
