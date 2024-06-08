@@ -44,53 +44,58 @@ class CardTopicVocabulary extends StatelessWidget  {
                 bottomLeft: Radius.circular(1.43),
               )
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              InkWell(
-                  onTap: (){
-                    controller.getStatusRounds(this.wordTopicModel.id,this.index);
+          child: InkWell(
+            onTap: () {
+              controller.getStatusRounds(this.wordTopicModel.id,this.index);
+            },
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                InkWell(
+                    onTap: (){
 
-                  },
-                  child: index != controller.indexActive ?
-                  Icon(FontAwesomeIcons.chevronRight,size: 18, color: Color(0xffDDDDDD),)  :
-                  Icon(FontAwesomeIcons.chevronDown,size: 18, color: Color(0xffDDDDDD),)
-              ),
-              Expanded(
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(width: 8,),
-                    Image.network(wordTopicModel.image, width: 30, height: 30, fit: BoxFit.cover,),
-                    const SizedBox(width: 12,),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('${wordTopicModel.wordTopicName}',style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16,color: Color(0xff342C27)),),
-                        Text("${wordTopicModel.words?.length ?? 0} từ",style: TextStyle( color: Color(0xff4D4D4F)),),
-                      ],
-                    )
-                  ],
+
+                    },
+                    child: index != controller.indexActive ?
+                    Icon(FontAwesomeIcons.chevronRight,size: 18, color: Color(0xffDDDDDD),)  :
+                    Icon(FontAwesomeIcons.chevronDown,size: 18, color: Color(0xffDDDDDD),)
                 ),
-              ),
-              if (index == controller.indexActive)
-                CircularPercentIndicator(
-                  radius: 22,
-                  lineWidth: 4,
-                  percent:  wordTopicModel.getNumRoundFinish()  / (wordTopicModel.listRounds != null ? wordTopicModel.listRounds!.length  : 1) ,
-                  center:  Text(
-                    "${wordTopicModel.getNumRoundFinish()}/${wordTopicModel.listRounds?.length ?? 0}",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.mainColor,
-                        fontSize: 14),
+                Expanded(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(width: 8,),
+                      Image.network(wordTopicModel.image, width: 30, height: 30, fit: BoxFit.cover,),
+                      const SizedBox(width: 12,),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('${wordTopicModel.wordTopicName}',style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16,color: Color(0xff342C27)),),
+                          Text("${wordTopicModel.words?.length ?? 0} từ",style: TextStyle( color: Color(0xff4D4D4F)),),
+                        ],
+                      )
+                    ],
                   ),
-                  circularStrokeCap: CircularStrokeCap.round,
-                  progressColor: AppColors.mainColor,
-                  backgroundColor: const Color(0xffDDDDDD),
-                )
-              ,
-            ],
+                ),
+                if (index == controller.indexActive)
+                  CircularPercentIndicator(
+                    radius: 22,
+                    lineWidth: 4,
+                    percent:  wordTopicModel.getNumRoundFinish()  / (wordTopicModel.listRounds != null ? wordTopicModel.listRounds!.length  : 1) ,
+                    center:  Text(
+                      "${wordTopicModel.getNumRoundFinish()}/${wordTopicModel.listRounds?.length ?? 0}",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.mainColor,
+                          fontSize: 14),
+                    ),
+                    circularStrokeCap: CircularStrokeCap.round,
+                    progressColor: AppColors.mainColor,
+                    backgroundColor: const Color(0xffDDDDDD),
+                  )
+                ,
+              ],
+            ),
           ),
         ),
         SizedBox(height: 8,),
@@ -142,15 +147,14 @@ class CardTopicVocabulary extends StatelessWidget  {
                         SizedBox(height: 4,),
                         Row(
                           children: [
-                            Text("Bài học: "),
-                            Text("${data['learnStatus']}", style: TextStyle(color: Color(0xffF3AE29)),),
+                            Text("Bài học và kiểm tra "),
                           ],
                         ),
                         SizedBox(height: 4,),
                         Row(
                           children: [
-                            Text("Luyện tập: "),
-                            Text("${data['practiceStatus']}",style: TextStyle(color: Color(0xffF3AE29))),
+                            Text("Trạng thái: "),
+                            Text("${data['status']}",style: TextStyle(color: Color(0xffF3AE29))),
                           ],
                         ),
                       ],

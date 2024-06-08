@@ -108,7 +108,7 @@ class AppPages {
     GetPage(
       name: AppRoutes.PRACTICE_VOCABULARY,
       page: () => PracticeVocabularyPage(),
-      binding: LearningVocabularyBinding()
+
     ),
     GetPage(
       name: AppRoutes.RESULT_VOCABULARY_PAGE,

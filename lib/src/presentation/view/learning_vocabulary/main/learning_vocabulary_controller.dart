@@ -87,8 +87,7 @@ class LearningVocabularyController extends GetxController {
       status = i < learnNum ? 'Đã hoàn thành' : 'Chưa hoàn thành';
       Map<String,dynamic> mp = {
         "round": i+1,
-        "learnStatus": status,
-        "practiceStatus": 'Chưa hoàn thành'
+        "status": status,
       };
       listRound.add(mp);
     }

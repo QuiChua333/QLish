@@ -18,7 +18,7 @@ class CongratulationView extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           title:  Text(
-            'Vòng ${controller.nextRound}',
+            "${controller.wordTopicName} - Vòng ${controller.roundStatus['round']}",
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
 
@@ -31,7 +31,7 @@ class CongratulationView extends StatelessWidget {
               SizedBox(height: 40,),
               Text('Congratulation!', style: TextStyle(color: Color(0xff007398), fontWeight: FontWeight.w700, fontSize: 28),),
               SizedBox(height: 8,),
-              Text('Bạn vừa hoàn thành vòng ${controller.nextRound}', style: TextStyle(fontSize: 16, color: Color(0xff429EBB)),),
+              Text('Bạn vừa hoàn thành vòng ${controller.roundStatus['round']}', style: TextStyle(fontSize: 16, color: Color(0xff429EBB)),),
               SizedBox(height: 80,),
               Image.asset('assets/images/congratulation.png'),
               SizedBox(height: 32,),
@@ -39,9 +39,9 @@ class CongratulationView extends StatelessWidget {
                 radius: 36,
                 lineWidth: 6,
                 animation: false,
-                percent: controller.nextRound  / controller.numberOfRounds,
+                percent: controller.roundStatus['round']  / controller.numberOfRounds,
                 center:  Text(
-                  '${controller.nextRound}/${controller.numberOfRounds}',
+                  '${controller.roundStatus['round']}/${controller.numberOfRounds}',
                   style:  TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 12,
@@ -58,7 +58,11 @@ class CongratulationView extends StatelessWidget {
               SizedBox(height: 32,),
               InkWell(
                 onTap: () {
-                  Get.toNamed(AppRoutes.LEARNING_VOCABULARY);
+                  Get.offAndToNamed(AppRoutes.PRACTICE_VOCABULARY, arguments: {
+                  "roundStatus" :controller.roundStatus,
+                  "wordTopicName" :controller.wordTopicName,
+                  "roundVocabulary" : controller.roundVocabulary,
+                  });
                 },
                 child: Container(
                   width: 200,

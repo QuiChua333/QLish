@@ -7,6 +7,7 @@ import 'package:qlish/src/data/models/wordTopic.dart';
 import 'package:qlish/src/presentation/component/button/button.dart';
 import 'package:qlish/src/presentation/view/learning_vocabulary/main/learning_vocabulary_controller.dart';
 import 'package:qlish/src/presentation/view/learning_vocabulary/widget/card_topic_vocabulary.dart';
+import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/learning_vocabulary_round_controller.dart';
 
 class LearningVocabularyPage extends StatelessWidget {
   LearningVocabularyPage({Key? key}) : super(key: key);

@@ -144,7 +144,7 @@ class StudyVocabularyRoundState extends State<LearningVocabularyRoundPage> with 
       appBar: AppBar(
       surfaceTintColor: Colors.transparent,
       centerTitle: true,
-      title: const Text("THE ZOO - VÒNG 1"),
+      title:  Text("${controller.wordTopicName} - Vòng ${controller.roundStatus['round']}"),
       leading: IconButton(
         onPressed: () {
           Get.back();
@@ -200,6 +200,7 @@ class StudyVocabularyRoundState extends State<LearningVocabularyRoundPage> with 
                           });
                         },
                         onPanEnd: (details) {
+                          controller.resetSpoken();
                           setState(() {
                             if((_leftValue - 60).abs() > valueToSlide){
                               if(wordQueue.length == 1){
@@ -293,6 +294,7 @@ class StudyVocabularyRoundState extends State<LearningVocabularyRoundPage> with 
                           });
                         },
                         onPanEnd: (details) {
+                          controller.resetSpoken();
                           setState(() {
                             if((_leftValue2 - 60).abs() > valueToSlide){
                               if(wordQueue.length == 1){

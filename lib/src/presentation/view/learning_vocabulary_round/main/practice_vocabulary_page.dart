@@ -4,22 +4,24 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:qlish/src/core/utils/constants/app_colors.dart';
 import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/learning_vocabulary_round_controller.dart';
+import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/practice_vocabulary_controller.dart';
 
 
 class PracticeVocabularyPage extends StatelessWidget {
   PracticeVocabularyPage({Key? key}) : super(key: key);
-  LearningVocabularyRoundController controller = Get.find<LearningVocabularyRoundController>();
+  final controller = Get.put(PracticeVocabularyController());
+
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<LearningVocabularyRoundController>(
+    return GetBuilder<PracticeVocabularyController>(
         builder: (_) {
           return SafeArea(
             child: Scaffold(
                 appBar: AppBar(
                   surfaceTintColor: Colors.transparent,
                   centerTitle: true,
-                  title: const Text("THE ZOO - VÒNG 1"),
+                  title:  Text("${controller.wordTopicName} - Vòng ${controller.roundStatus['round']}"),
                   leading: IconButton(
                     onPressed: () {
                       Get.back();
@@ -51,7 +53,7 @@ class PracticeVocabularyPage extends StatelessWidget {
                                       AnimatedContainer(
                                         height: 10,
                                         duration: Duration(milliseconds: 300), //
-                                        width: (Get.width-40)*controller.sttQuestion/10,
+                                        width: (Get.width-40)*(controller.indexQuestion +1)/controller.roundVocabulary.length,
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(10),
                                           color: Color(0xffF0CD51),
@@ -92,12 +94,14 @@ class PracticeVocabularyPage extends StatelessWidget {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text('Question x/y', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),),
+                                      Text('Câu hỏi ${controller.indexQuestion + 1}/${controller.roundVocabulary.length}', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),),
                                     ],
                                   ),
                                   SizedBox(height: 50,),
-                                  Text('water (n)', style: TextStyle(fontSize: 30, fontWeight: FontWeight.w300),),
-                                  SizedBox(height: 50,),
+                                  if (controller.isImage) Image.network(controller.imageQuestion, width: 170, height: 100, fit: BoxFit.contain)
+                                  else Text('${controller.question}', style: TextStyle(fontSize: 30, fontWeight: FontWeight.w300),),
+
+                                  SizedBox(height: 20,),
                                   Divider(color: Color(0xffDDDDDD)),
                                   SizedBox(height: 50,),
                                   InkWell(
@@ -107,7 +111,7 @@ class PracticeVocabularyPage extends StatelessWidget {
                                     child: Container(
                                       width: Get.width,
                                       padding: EdgeInsets.symmetric(vertical: 10),
-                                      child: Text('nước', style: TextStyle(fontSize: 20, color: controller.indexAnswer == 1 ? Color(0xff29ABEA) : Color(0xff606061)),textAlign: TextAlign.center,),
+                                      child: Text('${controller.answer1}', style: TextStyle(fontSize: 20, color: controller.indexAnswer == 1 ? Color(0xff29ABEA) : Color(0xff606061)),textAlign: TextAlign.center,),
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(16),
                                           color: controller.indexAnswer == 1 ? Color(0xffD3EEFB) : Colors.transparent,
@@ -128,7 +132,7 @@ class PracticeVocabularyPage extends StatelessWidget {
                                     child: Container(
                                       width: Get.width,
                                       padding: EdgeInsets.symmetric(vertical: 10),
-                                      child: Text('nước', style: TextStyle(fontSize: 20, color: controller.indexAnswer == 2 ? Color(0xff29ABEA) : Color(0xff606061)),textAlign: TextAlign.center,),
+                                      child: Text('${controller.answer2}', style: TextStyle(fontSize: 20, color: controller.indexAnswer == 2 ? Color(0xff29ABEA) : Color(0xff606061)),textAlign: TextAlign.center,),
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(16),
                                           color: controller.indexAnswer == 2 ? Color(0xffD3EEFB) : Colors.transparent,
@@ -150,7 +154,7 @@ class PracticeVocabularyPage extends StatelessWidget {
 
                                       width: Get.width,
                                       padding: EdgeInsets.symmetric(vertical: 10),
-                                      child: Text('nước', style: TextStyle(fontSize: 20, color: controller.indexAnswer == 3 ? Color(0xff29ABEA) : Color(0xff606061)),textAlign: TextAlign.center,),
+                                      child: Text('${controller.answer3}', style: TextStyle(fontSize: 20, color: controller.indexAnswer == 3 ? Color(0xff29ABEA) : Color(0xff606061)),textAlign: TextAlign.center,),
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(16),
                                           color: controller.indexAnswer == 3 ? Color(0xffD3EEFB) : Colors.transparent,
@@ -171,7 +175,7 @@ class PracticeVocabularyPage extends StatelessWidget {
                                     child: Container(
                                       width: Get.width,
                                       padding: EdgeInsets.symmetric(vertical: 10),
-                                      child: Text('nước', style: TextStyle(fontSize: 20, color: controller.indexAnswer == 4 ? Color(0xff29ABEA) : Color(0xff606061)),textAlign: TextAlign.center,),
+                                      child: Text('${controller.answer4}', style: TextStyle(fontSize: 20, color: controller.indexAnswer == 4 ? Color(0xff29ABEA) : Color(0xff606061)),textAlign: TextAlign.center,),
                                       decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(16),
                                           color: controller.indexAnswer == 4 ? Color(0xffD3EEFB) : Colors.transparent,
@@ -191,7 +195,7 @@ class PracticeVocabularyPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Positioned(
+                    if (controller.indexAnswer != 0 ) Positioned(
                         bottom: 0,
                         child: InkWell(
                           onTap: (){

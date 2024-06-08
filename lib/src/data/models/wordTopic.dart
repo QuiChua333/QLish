@@ -23,7 +23,7 @@ class WordTopicModel {
   });
 
   int getNumRoundFinish() {
-    return this.listRounds?.where((element) => element['learnStatus'] == 'Đã hoàn thành').toList().length ?? 0;
+    return this.listRounds?.where((element) => element['status'] == 'Đã hoàn thành').toList().length ?? 0;
   }
 
 
