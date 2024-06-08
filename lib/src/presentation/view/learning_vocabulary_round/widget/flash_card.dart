@@ -13,7 +13,11 @@ class FlashCard extends StatelessWidget  {
   final controller = Get.find<LearningVocabularyRoundController>();
   @override
   Widget build(BuildContext context) {
+
     return GetBuilder<LearningVocabularyRoundController>(builder: (_) {
+      if (word.name == controller.wordSpoken) {
+        controller.setSpellTrue(word.id);
+      }
       return Container(
         width: Get.width*0.7,
         padding: EdgeInsets.only(top: 8,left: 16,right: 16,bottom: 30),
@@ -75,7 +79,7 @@ class FlashCard extends StatelessWidget  {
                   ),
                 ),
                 SizedBox(width: 4,),
-                if (controller.wordSpoken == word.name) Row(children: [
+                if (controller.listIdSpell.contains(word.id)) Row(children: [
                   Text("+ 2", style: TextStyle(color: Color(0xffFFDA1A),fontWeight: FontWeight.w500, fontSize: 20),),
                   SizedBox(width: 4,),
                   Icon(

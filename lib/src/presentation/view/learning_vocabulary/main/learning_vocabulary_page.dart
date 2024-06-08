@@ -39,9 +39,10 @@ class LearningVocabularyPage extends StatelessWidget {
                         color: AppColors.mainColor,
                         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                           children: [
                             Image.asset('assets/images/badge.png'),
+                            SizedBox(width: 20,),
                             const Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -49,14 +50,7 @@ class LearningVocabularyPage extends StatelessWidget {
                                 Text("Đừng bỏ cuộc giữa chừng bạn nhé!", style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400),),
                               ],
                             ),
-                            CustomButton(
-                              onTap: () {},
-                              text: "Bắt đầu",
-                              width: 40,
-                              height: 18,
-                              textSize: 14,
-                              borderRadius: 8,
-                            )
+
                           ],
                         ),
                       ),

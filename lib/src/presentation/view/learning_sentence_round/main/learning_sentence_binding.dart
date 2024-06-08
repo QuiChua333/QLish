@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 
-import 'learning_sentence_controller.dart';
+import 'learning_sentence_round_controller.dart';
 
 class LearningSentenceBinding implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<LearningSentenceController>(() => LearningSentenceController());
+    Get.lazyPut<LearningSentenceRoundController>(() => LearningSentenceRoundController());
   }
 }

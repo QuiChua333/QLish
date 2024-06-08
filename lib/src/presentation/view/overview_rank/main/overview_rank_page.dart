@@ -5,11 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:qlish/src/core/utils/constants/app_routes.dart';
 import 'package:qlish/src/presentation/view/overview_rank/widget/item_rank.dart';
+
+import '../../../../core/utils/repository/user_repository/UserRepository.dart';
+import '../../home/main/home_controller.dart';
 
 
 class OverviewRankPage extends StatelessWidget {
   OverviewRankPage({Key? key}) : super(key: key);
+  final controller = Get.find<HomeController>();
+
 
 
   @override
@@ -49,7 +55,7 @@ class OverviewRankPage extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text('Huỳnh Ngọc Quí', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),),
+                                 Text('${controller.user.name}', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),),
                                 Container(
                                   constraints: const BoxConstraints(
                                     maxWidth: 240,
@@ -69,7 +75,7 @@ class OverviewRankPage extends StatelessWidget {
                                 border: Border.all(width: 0.5, color: const Color(0xffDDDDDD)),
                                 borderRadius: BorderRadius.circular(4),
                               ),
-                              child: const Row(
+                              child:  Row(
                                 children: [
                                   Icon(
                                     FontAwesomeIcons.solidStar,
@@ -80,7 +86,7 @@ class OverviewRankPage extends StatelessWidget {
                                     width: 6,
                                   ),
                                   Text(
-                                    "100",
+                                    "${controller.user.score}",
                                     style: TextStyle(
                                          fontSize: 14),
                                   )
@@ -88,51 +94,8 @@ class OverviewRankPage extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(width: 8,),
-                            Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                              decoration: BoxDecoration(
-                                  border: Border.all(width: 0.5, color: Color(0xffDDDDDD)),
-                                  borderRadius: BorderRadius.circular(4),
-                              ),
-                              child: const Row(
-                                children: [
-                                  Icon(
-                                    FontAwesomeIcons.fire,
-                                    size: 14,
-                                    color: Color(0xffEC6264),
-                                  ),
-                                  SizedBox(
-                                    width: 6,
-                                  ),
-                                  Text(
-                                    "100",
-                                    style: TextStyle(
-                                       fontSize: 14  ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            const SizedBox(width: 8,),
-                            Container(
-                              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                              decoration: BoxDecoration(
-                                border: Border.all(width: 0.5, color: Color(0xffDDDDDD)),
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                              child: Row(
-                                children: [
-                                  Image.asset('assets/images/medal.png', width: 20,),
-                                  const SizedBox(
-                                    width: 6,
-                                  ),
-                                  const Text(
-                                    "Vàng",
-                                    style: TextStyle(
-                                       fontSize: 14  ),
-                                  )
-                                ],
-                              ),
-                            )
+
+
                           ],
                         )
                       ],
@@ -161,7 +124,9 @@ class OverviewRankPage extends StatelessWidget {
                         ItemRank(),
                         SizedBox(height: 28,),
                         InkWell(
-                          onTap: () { print('qqq'); },
+                          onTap: () {
+                            Get.toNamed(AppRoutes.DETAIL_RANK);
+                          },
                             child: Center(child: Text('Xem tất cả', style: TextStyle(fontSize: 16, color: Color(0xff342C27), fontWeight: FontWeight.w300))))
 
                       ],

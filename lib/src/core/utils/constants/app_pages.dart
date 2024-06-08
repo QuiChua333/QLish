@@ -4,6 +4,7 @@ import 'package:qlish/src/core/utils/constants/app_routes.dart';
 import 'package:qlish/src/presentation/view/change_name/main/change_name_page.dart';
 import 'package:qlish/src/presentation/view/change_password/main/change_password_page.dart';
 import 'package:qlish/src/presentation/view/detail_rank/main/detail_rank_page.dart';
+import 'package:qlish/src/presentation/view/dictionary/main/dictionary_page.dart';
 import 'package:qlish/src/presentation/view/edit_profile/main/edit_profile_page.dart';
 import 'package:qlish/src/presentation/view/emailVerify/main/email_verify_binding.dart';
 import 'package:qlish/src/presentation/view/emailVerify/main/email_verify_page.dart';
@@ -95,6 +96,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.IPA,
       page: () => IPAPage(),
+    ),
+    GetPage(
+      name: AppRoutes.DICTIONARY,
+      page: () => DictionaryPage(),
     ),
     GetPage(
       name: AppRoutes.LEARNING_VOCABULARY,

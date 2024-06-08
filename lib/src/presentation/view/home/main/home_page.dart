@@ -8,6 +8,7 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:qlish/src/core/utils/constants/app_colors.dart';
 import 'package:qlish/src/core/utils/constants/app_routes.dart';
 import 'package:qlish/src/core/utils/repository/authentication_repository/authentication_repository.dart';
+import 'package:qlish/src/core/utils/repository/user_repository/UserRepository.dart';
 import 'package:qlish/src/data/models/user.dart';
 import 'package:qlish/src/presentation/component/button/button.dart';
 import 'package:qlish/src/presentation/view/home/widget/course.dart';
@@ -19,7 +20,6 @@ class HomePage extends StatelessWidget {
   HomePage({super.key});
 
   final controller = Get.put(HomeController());
-
   @override
   Widget build(BuildContext context) {
 
@@ -35,11 +35,7 @@ class HomePage extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Icon(
-                            FontAwesomeIcons.solidStar,
-                            size: 20,
-                            color: Color(0xffFFDA1A),
-                          ),
+
                           SizedBox(
                             width: 6,
                           ),
@@ -53,15 +49,15 @@ class HomePage extends StatelessWidget {
                       Row(
                         children: [
                           Icon(
-                            FontAwesomeIcons.fire,
+                            FontAwesomeIcons.solidStar,
                             size: 20,
-                            color: Color(0xffEC6264),
+                            color: Color(0xffFFDA1A),
                           ),
                           SizedBox(
                             width: 6,
                           ),
                           Text(
-                            '100',
+                            '${controller.user.score}',
                             style: TextStyle(
                                 color: Color(0xffFEA832), fontSize: 18),
                           )
@@ -70,10 +66,7 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                actions: [
-                  IconButton(
-                      onPressed: () {}, icon: FaIcon(FontAwesomeIcons.bell)),
-                ],
+
               ),
               body: SingleChildScrollView(
                 child: Container(
@@ -212,7 +205,7 @@ class HomePage extends StatelessWidget {
                                       child: Course(
                                         assetImage: 'assets/images/dictionary.png',
                                         name: "Học từ vựng",
-                                        description: "1000 từ vựng",
+                                        description: 'Chủ đề',
                                         backgroundColor: Color(0xffFF96BC),
                                         bottomSideColor: Color(0xffDF87A7),
                                       ),
@@ -228,7 +221,7 @@ class HomePage extends StatelessWidget {
                                       child: Course(
                                           assetImage: 'assets/images/ipa.png',
                                           name: "Phiên âm IPA",
-                                          description: "1000 từ vựng",
+                                          description: '44 âm',
                                           backgroundColor: Color(0xff73AEF3),
                                           bottomSideColor: Color(0xff6A9FDD)),
                                     )),
@@ -248,7 +241,7 @@ class HomePage extends StatelessWidget {
                                           assetImage:
                                           'assets/images/communication.png',
                                           name: "Học câu giao tiếp",
-                                          description: "1000 từ vựng",
+                                          description: "Chủ đề",
                                           backgroundColor: Color(0xffF0CD51),
                                           bottomSideColor: Color(0xffDEBD4A)),
                                     )),
@@ -256,13 +249,18 @@ class HomePage extends StatelessWidget {
                                   width: 24,
                                 ),
                                 Expanded(
-                                    child: Course(
-                                        assetImage:
-                                        'assets/images/vocabulary_game.png',
-                                        name: "Game từ vựng",
-                                        description: "1000 từ vựng",
-                                        backgroundColor: Color(0xffF4B295),
-                                        bottomSideColor: Color(0xffDAA791))),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Get.toNamed(AppRoutes.DICTIONARY);
+                                      },
+                                      child: Course(
+                                          assetImage:
+                                          'assets/images/vocabulary_game.png',
+                                          name: "Tra từ điển",
+                                          description: "Anh Việt",
+                                          backgroundColor: Color(0xffF4B295),
+                                          bottomSideColor: Color(0xffDAA791)),
+                                    )),
                               ],
                             )
                           ],

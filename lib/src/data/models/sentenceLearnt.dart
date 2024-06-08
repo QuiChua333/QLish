@@ -2,13 +2,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 const defaultAvatar = 'https://static.vecteezy.com/system/resources/previews/009/292/244/original/default-avatar-icon-of-social-media-user-vector.jpg';
-class WordLearntModel {
-  final String? wordId;
+class SentenceLearntModel {
+  final String? sentenceId;
   final String userId;
   final bool isSpeed;
 
-  WordLearntModel({
-    this.wordId,
+  SentenceLearntModel({
+    this.sentenceId,
     required this.userId,
     required this.isSpeed,
   });
@@ -16,15 +16,15 @@ class WordLearntModel {
 
   toJson() {
     return {
-      "wordId": wordId,
+      "sentenceId": sentenceId,
       "userId": userId,
-      "isSpeed": isSpeed,
+      "isSpeed": false,
     };
   }
-  factory WordLearntModel.fromFirebase(DocumentSnapshot snapshot) {
+  factory SentenceLearntModel.fromFirebase(DocumentSnapshot snapshot) {
     var data = snapshot;
-    return WordLearntModel(
-      wordId: data["wordId"],
+    return SentenceLearntModel(
+      sentenceId: data["sentenceId"],
       userId: data["userId"],
       isSpeed: data["isSpeed"],
     );

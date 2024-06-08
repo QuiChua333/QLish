@@ -46,7 +46,7 @@ class WordTopicRepository extends GetxController {
 
   Future<List<WordLearntModel>> fetchLearntWordsForUserByTopic() async {
     print(_userRepo.currentUser.id);
-    final querySnapshot = await _db.collection('learnt')
+    final querySnapshot = await _db.collection('wordLearnt')
         .where('userId', isEqualTo: _userRepo.currentUser.id)
         .where('wordId')
         .get();

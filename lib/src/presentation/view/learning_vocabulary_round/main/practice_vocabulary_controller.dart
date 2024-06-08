@@ -4,11 +4,15 @@ import 'dart:ui';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
 import 'package:qlish/src/core/utils/constants/app_routes.dart';
+import 'package:qlish/src/core/utils/repository/user_repository/UserRepository.dart';
+import 'package:qlish/src/core/utils/repository/wordLearn_repository/WordLearnRepository.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
 import '../../../../data/models/word.dart';
+import '../../../../data/models/wordLearnt.dart';
 
 class PracticeVocabularyController extends GetxController{
+  final _learnRepo = Get.put(WordLearnRepository());
   int indexAnswer = 0;
   String typeQuestion = 'string';
   int sttQuestion = 1;
@@ -88,7 +92,7 @@ class PracticeVocabularyController extends GetxController{
   }
 
 
-  void nextQuestion() {
+  Future<void> nextQuestion() async{
     String tmp = '';
     switch (indexAnswer) {
       case 1:
@@ -109,6 +113,17 @@ class PracticeVocabularyController extends GetxController{
     if (indexQuestion > 9) {
 
       numTrue = saveResult.where((element) => element['answer'] == element['correctAnswer']).toList().length;
+      if (numTrue/roundVocabulary.length >= 0.8) {
+        String userId = UserRepository.instance.currentUser.id ?? '';
+        List<WordLearntModel> learntWords = roundVocabulary.map((word) {
+          return WordLearntModel(
+            wordId: word.id,
+            userId: userId,
+            isSpeed: false,
+          );
+        }).toList();
+        await _learnRepo.saveLearntWordsToFirestore(learntWords);
+      }
       Get.offAndToNamed(AppRoutes.RESULT_VOCABULARY_PAGE);
 
 
@@ -237,10 +252,15 @@ class PracticeVocabularyController extends GetxController{
 
   }
 
-  void handleContinue() {
+  Future<void> handleContinue() async{
     if (numTrue/roundVocabulary.length<0.8) {
       Get.back();
     }
+    else {
+
+      Get.back();
+    }
+
   }
   void shuffleList<T>(List<T> list) {
     final random = Random();

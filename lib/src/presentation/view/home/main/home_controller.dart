@@ -6,7 +6,7 @@ import 'package:qlish/src/data/models/user.dart';
 
 class HomeController extends GetxController {
   final _userRepo = Get.put(UserRepository());
-  late UserModel user = UserModel(email: '', name: '', id: '', password: '');
+  UserModel user = UserModel(email: '', password: '', name: '');
 
   @override
   void onInit() async {
@@ -19,9 +19,10 @@ class HomeController extends GetxController {
   Future<void> getUserData() async {
     final email = AuthenticationRepository.instance.firebaseUser.value?.email;
     if (email != null) {
-       user = await _userRepo.getUserDetail(email);
+      user = await _userRepo.getUserDetail(email);
     }
     else ToastMessage.show('Error', ToastMessage.ERROR);
 
   }
+
 }

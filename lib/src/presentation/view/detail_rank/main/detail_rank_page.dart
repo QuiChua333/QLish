@@ -40,7 +40,7 @@ class DetailRankPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Bảng Vàng', style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w600),),
+                        Text('Bảng Xếp Hạng', style: TextStyle(fontSize: 22, color: Colors.white, fontWeight: FontWeight.w600),),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
