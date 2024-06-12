@@ -16,6 +16,13 @@ class HomeController extends GetxController {
 
   }
 
+  Future<void> ref() async {
+    await getUserData();
+    update();
+  }
+
+
+
   Future<void> getUserData() async {
     final email = AuthenticationRepository.instance.firebaseUser.value?.email;
     if (email != null) {

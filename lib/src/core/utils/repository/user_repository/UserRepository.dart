@@ -38,4 +38,31 @@ class UserRepository extends GetxController {
     currentUser = userData;
     return userData;
   }
+
+  Future<List<UserModel>> getListUser () async {
+
+
+    final snapshot = await _db.collection('user').get();
+    final listWordsForTopic = snapshot.docs.map((e) => UserModel.fromFirebase(e)).toList();
+    return listWordsForTopic;
+  }
+
+  Future<void> addStar({String? type}) async{
+    if (type == 'word') {
+      await FirebaseFirestore.instance.collection('user').doc(currentUser.id).update({
+        'score': currentUser.score + 2,
+      });
+    }
+    if (type == 'sentence') {
+      await FirebaseFirestore.instance.collection('user').doc(currentUser.id).update({
+        'score': currentUser.score + 5,
+      });
+    }
+    if (type == 'exam') {
+      await FirebaseFirestore.instance.collection('user').doc(currentUser.id).update({
+        'score': currentUser.score + 10,
+      });
+    }
+
+  }
 }

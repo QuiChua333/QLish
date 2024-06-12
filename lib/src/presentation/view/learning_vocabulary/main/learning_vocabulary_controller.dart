@@ -11,6 +11,8 @@ import 'package:qlish/src/data/models/wordTopic.dart';
 import '../../../../data/models/word.dart';
 
 class LearningVocabularyController extends GetxController {
+  bool isLoading = true;
+  int lastIndexFinish = 0;
   final _wordTopicRepo = Get.put(WordTopicRepository());
   late List<WordTopicModel> allWordTopics = [];
   late int? indexActive = -1;
@@ -19,13 +21,16 @@ class LearningVocabularyController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
+    isLoading = true;
     await getAllWordTopics();
+    isLoading = false;
     update();
 
   }
 
   Future<void> getAllWordTopics() async {
     allWordTopics = await _wordTopicRepo.getAllTopic();
+    isLoading = false;
   }
 
   Future<void> getStatusRounds(String? wordTopicId, int? index) async {
@@ -33,6 +38,7 @@ class LearningVocabularyController extends GetxController {
       final rounds = await splitWordsIntoRounds(wordTopicModel,10);
       
       wordTopicModel.listRounds = rounds;
+      lastIndexFinish = rounds.lastIndexWhere((element) => element['status'] == 'Đã hoàn thành');
       indexActive = index;
       update();
 

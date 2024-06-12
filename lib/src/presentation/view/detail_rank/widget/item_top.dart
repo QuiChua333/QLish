@@ -2,52 +2,63 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:qlish/src/data/models/user.dart';
 
-Widget ItemTopRank({int? top}) {
-  return Column(
-    children: [
-      Medal(top),
-      const SizedBox(height: 16,),
-      Container(
-        constraints: const BoxConstraints(
-          maxWidth: 120
+class ItemTopRank extends StatelessWidget {
+  ItemTopRank({
+    Key? key,
+    required this.user,
+    required this.top,
+  }) ;
+  final UserModel user;
+  final int top;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Medal(top,user),
+        const SizedBox(height: 16,),
+        Container(
+            constraints: const BoxConstraints(
+                maxWidth: 120
+            ),
+            child: Text('$top. ${user.name}',textAlign: TextAlign.center ,style: TextStyle(fontWeight: FontWeight.w500, color: Colors.white, fontSize: 13),)
         ),
-          child: Text('$top. Huỳnh Ngọc Quí',textAlign: TextAlign.center ,style: TextStyle(fontWeight: FontWeight.w500, color: Colors.white, fontSize: 13),)
-      ),
-      const SizedBox(height: 8,),
-      Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            FontAwesomeIcons.solidStar,
-            size: 16,
-            color: Color(0xffFFDA1A),
-          ),
-          SizedBox(
-            width: 6,
-          ),
-          Text(
-            "100",
-            style: TextStyle(
-                fontSize: 14,
-            color: Colors.white),
-          )
-        ],
-      ),
-    ],
-  );
+        const SizedBox(height: 8,),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              FontAwesomeIcons.solidStar,
+              size: 16,
+              color: Color(0xffFFDA1A),
+            ),
+            SizedBox(
+              width: 6,
+            ),
+            Text(
+              "${user.score}",
+              style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.white),
+            )
+          ],
+        ),
+      ],
+    );
+  }
 }
 
 
-Widget Medal(top) {
+Widget Medal(top,user) {
   return Container(
     child: Stack(
       children: [
-        const Padding(
+         Padding(
           padding: EdgeInsets.only(bottom: 16),
           child: CircleAvatar(
             radius: 32, // Image radius
-            backgroundImage: NetworkImage('https://cdn.pixabay.com/photo/2023/11/20/23/06/woman-8402052_1280.jpg'),
+            backgroundImage: NetworkImage('${user.avatar}'),
           ),
         ),
         Positioned.fill(

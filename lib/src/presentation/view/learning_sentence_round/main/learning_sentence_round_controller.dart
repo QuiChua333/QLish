@@ -1,10 +1,18 @@
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
+import 'package:qlish/src/core/utils/repository/savedsentence_repository/SavedSentenceRepository.dart';
+import 'package:qlish/src/core/utils/repository/sentenceLearn_repository/SentenceLearnRepository.dart';
 import 'package:qlish/src/data/models/sentence.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
+import '../../../../core/utils/repository/savedword_repository/SavedWordRepository.dart';
+import '../../../../core/utils/repository/user_repository/UserRepository.dart';
+
 class LearningSentenceRoundController extends GetxController{
+  final saveSentenceRepo = Get.put(SavedSentenceRepository());
+  final learntSentenceRepo = Get.put(SentenceLearnRepository());
+  final userRepo = UserRepository.instance;
   int indexAnswer = 0;
   String typeQuestion = 'string';
   int sttQuestion = 1;
@@ -20,6 +28,7 @@ class LearningSentenceRoundController extends GetxController{
 
   String sentenceSpoken = '';
   List<String?> listIdSpell = [];
+  List<String?> listIdSave = [];
   bool speedEnable = false;
   double confidenceLevel = 0;
 
@@ -63,8 +72,26 @@ class LearningSentenceRoundController extends GetxController{
 
   }
 
-  void setSpellTrue(String? wordId) {
-    if (!listIdSpell.contains(wordId)) listIdSpell.add(wordId);
+  Future<void> setSpellTrue(String? sentenceId) async {
+    if (!listIdSpell.contains(sentenceId))  {
+      listIdSpell.add(sentenceId);
+      await userRepo.addStar(type: 'sentence');
+      update();
+    }
+  }
+
+  Future<void> saveSentence(String? sentenceId) async{
+    if (!listIdSave.contains(sentenceId)) {
+      listIdSave.add(sentenceId);
+      await saveSentenceRepo.saveSentence(sentenceId);
+
+    }
+    else {
+      await saveSentenceRepo.unSavedSentence(sentenceId);
+      listIdSave.remove(sentenceId);
+    }
+    update();
+
   }
   void initSpeech () async {
 
@@ -94,6 +121,10 @@ class LearningSentenceRoundController extends GetxController{
   Future speak(String text) async{
     flutterTts.setLanguage('en');
     var result = await flutterTts.speak(text);
+  }
+
+  Future<void> saveLearntSentence(String? sentenceId) async {
+    await learntSentenceRepo.saveLearntSentenceToFirestore(sentenceId);
   }
 
 }

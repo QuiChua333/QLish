@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:qlish/src/core/utils/constants/app_colors.dart';
 import 'package:qlish/src/data/models/sentenceTopic.dart';
 import 'package:qlish/src/presentation/component/button/button.dart';
+import 'package:qlish/src/presentation/view/home/main/home_controller.dart';
 import 'package:qlish/src/presentation/view/learning_sentence/main/learning_sentence_controller.dart';
 import 'package:qlish/src/presentation/view/learning_sentence/widget/sentence_topic_vocabulary.dart';
 
@@ -22,13 +23,13 @@ class LearningSentencePage extends StatelessWidget {
               centerTitle: true,
               title: const Text("HỌC MẪU CÂU"),
               leading: IconButton(
-                onPressed: () {
+                onPressed: () async {
                   Get.back();
                 },
                 icon: const Icon(Icons.arrow_back),
               ),
             ),
-            body: Container(
+            body: !controller.isLoading ? Container(
               padding: const EdgeInsets.only(bottom: 16),
               width: Get.width,
               child:  Column(
@@ -69,7 +70,11 @@ class LearningSentencePage extends StatelessWidget {
                   )
                 ],
               ),
-            )),
+            ) : Center(child: CircularProgressIndicator(
+              color: AppColors.mainColor,
+              backgroundColor: AppColors.mainBackground,
+            ),)
+        ),
       );
     });
   }

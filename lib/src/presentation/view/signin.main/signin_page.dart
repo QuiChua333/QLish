@@ -119,10 +119,7 @@ class SignInPage extends StatelessWidget{
                                     color: Color(0xffE3E3E3),
                                   ),
                                 ),
-                                Container(
-                                  margin: EdgeInsets.symmetric(horizontal: 20),
-                                  child:  Text('Hoặc', style: TextStyle(color: Color(0xff6A707C)),),
-                                ),
+
                                 Expanded(
                                   child: Container(
                                     height: 1,
@@ -132,22 +129,7 @@ class SignInPage extends StatelessWidget{
                               ],
                             ),
                           ),
-                          InkWell(
-                            onTap: (){
 
-                            },
-                            child: Container(
-                              padding: EdgeInsets.symmetric(vertical: 12),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: Colors.white,
-                                  border: Border.all(width: 1, color: Color(0xffE3E3E3))
-                              ),
-                              child: Center(
-                                  child: SvgPicture.asset('assets/images/google_ic.svg')
-                              ),
-                            ),
-                          )
                         ],
                       ),
                     )

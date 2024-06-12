@@ -106,7 +106,7 @@ class DictionaryPage extends StatelessWidget {
                                       controller.audioPhonetic();
 
                                },
-                               child: Image.asset('assets/images/volume.png')),
+                               child: Image.asset('assets/images/volume.png', width: 50,)),
                            SizedBox(width: 6,),
                            Text('Phiên âm: ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Color(0xffAAAAAA))),
                            SizedBox(width: 6,),

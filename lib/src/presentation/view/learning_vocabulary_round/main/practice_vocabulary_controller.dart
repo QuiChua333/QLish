@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:qlish/src/core/utils/constants/app_routes.dart';
 import 'package:qlish/src/core/utils/repository/user_repository/UserRepository.dart';
 import 'package:qlish/src/core/utils/repository/wordLearn_repository/WordLearnRepository.dart';
+import 'package:qlish/src/data/models/user.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
 import '../../../../data/models/word.dart';
@@ -114,7 +115,8 @@ class PracticeVocabularyController extends GetxController{
 
       numTrue = saveResult.where((element) => element['answer'] == element['correctAnswer']).toList().length;
       if (numTrue/roundVocabulary.length >= 0.8) {
-        String userId = UserRepository.instance.currentUser.id ?? '';
+        UserModel user = UserRepository.instance.currentUser;
+        String userId = user.id!;
         List<WordLearntModel> learntWords = roundVocabulary.map((word) {
           return WordLearntModel(
             wordId: word.id,
@@ -123,6 +125,7 @@ class PracticeVocabularyController extends GetxController{
           );
         }).toList();
         await _learnRepo.saveLearntWordsToFirestore(learntWords);
+        await UserRepository.instance.addStar(type: 'exam');
       }
       Get.offAndToNamed(AppRoutes.RESULT_VOCABULARY_PAGE);
 

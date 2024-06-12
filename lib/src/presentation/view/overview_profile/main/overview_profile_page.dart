@@ -50,7 +50,7 @@ class OverviewProfilePage extends StatelessWidget {
                           children: [
                             CircleAvatar(
                               radius: 26, // Image radius
-                              backgroundImage: NetworkImage('https://cdn.pixabay.com/photo/2023/11/20/23/06/woman-8402052_1280.jpg'),
+                              backgroundImage: NetworkImage(controller.user.avatar),
                             ),
                             SizedBox(width: 14,),
                             Column(
@@ -61,7 +61,7 @@ class OverviewProfilePage extends StatelessWidget {
                                   constraints: BoxConstraints(
                                     maxWidth: 240,
                                   ),
-                                    child: Text('Có mặt 1 ngày liên tục (Tổng 7 ngày)')
+                                    child: Text('${controller.user.email}')
                                 )
                               ],
                             )
@@ -102,52 +102,6 @@ class OverviewProfilePage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 16,),
-                  // Container(
-                  //   width: Get.width,
-                  //   padding: EdgeInsets.all(16),
-                  //   decoration: BoxDecoration(
-                  //     color: Colors.white,
-                  //     borderRadius: BorderRadius.circular(10),
-                  //   ),
-                  //   child: Column(
-                  //     crossAxisAlignment: CrossAxisAlignment.start,
-                  //     children: [
-                  //       Text('Thành tích của tôi', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),),
-                  //       SizedBox(height: 20,),
-                  //       Padding(
-                  //         padding: const EdgeInsets.symmetric(horizontal: 12),
-                  //         child: Row(
-                  //           mainAxisSize: MainAxisSize.max,
-                  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //           children: [
-                  //             Column(
-                  //               children: [
-                  //                 Image.asset('assets/images/medal.png', width: 40),
-                  //                 SizedBox(height: 6,),
-                  //                 Text('Vàng')
-                  //               ],
-                  //             ),
-                  //             Column(
-                  //               children: [
-                  //                 Image.asset('assets/images/winlose.png', width: 40),
-                  //                 SizedBox(height: 6,),
-                  //                 Text('Win: 1 - Lose: 2')
-                  //               ],
-                  //             ),
-                  //             Column(
-                  //               children: [
-                  //                 Image.asset('assets/images/streak.png', width: 40),
-                  //                 SizedBox(height: 6,),
-                  //                 Text('365')
-                  //               ],
-                  //             )
-                  //           ],
-                  //         ),
-                  //       ),
-                  //
-                  //     ],
-                  //   ),
-                  // ),
                   SizedBox(height: 16,),
                   Container(
                     width: Get.width,
@@ -161,18 +115,23 @@ class OverviewProfilePage extends StatelessWidget {
                       children: [
                         Text('Sổ tay lưu trữ', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),),
                         SizedBox(height: 20,),
-                        Container(
-                          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(width: 1, color: Color(0xffDDDDDD))
-                          ),
-                          child: Row(
-                            children: [
-                              Image.asset('assets/images/vocabularyBrochure.png', width: 26),
-                              SizedBox(width: 24,),
-                              Text('Sổ từ vựng'),
-                            ],
+                        InkWell(
+                          onTap: () {
+                            Get.toNamed(AppRoutes.SAVED_WORD_PAGE);
+                          },
+                          child: Container(
+                            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(width: 1, color: Color(0xffDDDDDD))
+                            ),
+                            child: Row(
+                              children: [
+                                Image.asset('assets/images/vocabularyBrochure.png', width: 26),
+                                SizedBox(width: 24,),
+                                Text('Sổ từ vựng'),
+                              ],
+                            ),
                           ),
                         ),
                         SizedBox(height: 12,),
@@ -211,23 +170,27 @@ class OverviewProfilePage extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 12),
                           child: Column(
                             children: [
-                              Container(
-                                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(width: 1, color: Color(0xffDDDDDD))
-                                ),
-                                child: Row(
-                                  children: [
-                                    Image.asset('assets/images/vocabularyStt.png', width: 26),
-                                    SizedBox(width: 28,),
-                                    Column(
-                                      children: [
-                                        Text('150', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600,color: Color(0xff6D6969)),),
-                                        Text('Từ vựng', style: TextStyle(color: Color(0xff000000)),),
-                                      ],
-                                    )
-                                  ],
+                              InkWell(
+                                onTap: () {
+                                  Get.toNamed(AppRoutes.LEARNT_WORD_PAGE);
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(width: 1, color: Color(0xffDDDDDD))
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Image.asset('assets/images/vocabularyStt.png', width: 26),
+                                      SizedBox(width: 28,),
+                                      Column(
+                                        children: [
+                                          Text('Từ vựng', style: TextStyle(color: Color(0xff000000)),),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                               SizedBox(height: 12,),
@@ -243,7 +206,6 @@ class OverviewProfilePage extends StatelessWidget {
                                     SizedBox(width: 28,),
                                     Column(
                                       children: [
-                                        Text('50', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600,color: Color(0xff6D6969)),),
                                         Text('Mẫu câu', style: TextStyle(color: Color(0xff000000)),),
                                       ],
                                     )

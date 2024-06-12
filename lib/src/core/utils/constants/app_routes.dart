@@ -31,6 +31,11 @@ class AppRoutes {
   static const String CONGRATULATION_VOCABULARY_ROUND = "/congratulationround";
 
   static const String DICTIONARY = "/dictionary";
+  static const String LEARNT_WORD_PAGE = "/learntwordpage";
+  static const String LEARNT_WORD_DETAIL_PAGE = "/leartworddetailpage";
+
+  static const String SAVED_WORD_PAGE = "/savedwordpage";
+  static const String SAVED_WORD_DETAIL_PAGE = "/savedworddetailpage";
 
 
 

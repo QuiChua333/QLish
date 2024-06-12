@@ -31,30 +31,13 @@ class CongratulationView extends StatelessWidget {
               SizedBox(height: 40,),
               Text('Congratulation!', style: TextStyle(color: Color(0xff007398), fontWeight: FontWeight.w700, fontSize: 28),),
               SizedBox(height: 8,),
-              Text('Bạn vừa hoàn thành vòng ${controller.roundStatus['round']}', style: TextStyle(fontSize: 16, color: Color(0xff429EBB)),),
-              SizedBox(height: 80,),
+
               Image.asset('assets/images/congratulation.png'),
               SizedBox(height: 32,),
-              CircularPercentIndicator(
-                radius: 36,
-                lineWidth: 6,
-                animation: false,
-                percent: controller.roundStatus['round']  / controller.numberOfRounds,
-                center:  Text(
-                  '${controller.roundStatus['round']}/${controller.numberOfRounds}',
-                  style:  TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 12,
-                      color: AppColors.mainColor
-                  ),
-                ),
-                circularStrokeCap: CircularStrokeCap.round,
-                progressColor: AppColors.mainColor,
-              ),
-              SizedBox(height: 18,),
+
               SizedBox(
                 width: Get.width*0.6,
-                  child: Text('Giờ cùng kiểm tra để ôn tập kiến thức vừa rồi!', style: TextStyle(fontSize: 18, color: Color(0xff429EBB)), textAlign: TextAlign.center,)),
+                  child: Text('Giờ cùng kiểm tra để ôn tập kiến thức vừa rồi! Số điểm tối thiểu là 80% để qua vòng nhé', style: TextStyle(fontSize: 18, color: Color(0xff429EBB)), textAlign: TextAlign.center,)),
               SizedBox(height: 32,),
               InkWell(
                 onTap: () {

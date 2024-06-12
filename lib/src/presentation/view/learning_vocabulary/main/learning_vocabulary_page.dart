@@ -30,7 +30,7 @@ class LearningVocabularyPage extends StatelessWidget {
                     icon: const Icon(Icons.arrow_back),
                   ),
                 ),
-                body: Container(
+                body: !controller.isLoading ? Container(
                   padding: const EdgeInsets.only(bottom: 16),
                   width: Get.width,
                   child:  Column(
@@ -71,7 +71,11 @@ class LearningVocabularyPage extends StatelessWidget {
                       )
                     ],
                   ),
-                )),
+                ) : Center(child: CircularProgressIndicator(
+                  color: AppColors.mainColor,
+                  backgroundColor: AppColors.mainBackground,
+                ),)
+            ),
           );
         }
     );

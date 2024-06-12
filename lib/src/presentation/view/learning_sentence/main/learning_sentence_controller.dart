@@ -13,15 +13,20 @@ import 'package:qlish/src/data/models/wordTopic.dart';
 import '../../../../data/models/word.dart';
 
 class LearningSentenceController extends GetxController {
+  bool isLoading = true;
   final _sentenceTopicRepo = Get.put(SentenceTopicRepository());
   late List<SentenceTopicModel> allSentenceTopics = [];
   late int? indexActive = -1;
   List<List<WordModel>> roundsController = [];
+  int lastIndexFinish = 0;
+
 
   @override
   void onInit() async {
     super.onInit();
+    isLoading = true;
     await getAllWordTopics();
+    isLoading = false;
     update();
 
   }
@@ -36,6 +41,7 @@ class LearningSentenceController extends GetxController {
     SentenceTopicModel sentenceTopicModel = allSentenceTopics.firstWhere((element) => element.id == sentenceTopicId);
     final rounds = await getSentencesWithLearningStatus(sentenceTopicModel);
     sentenceTopicModel.listRounds = rounds;
+    lastIndexFinish = rounds.lastIndexWhere((element) => element['status'] == 'Đã hoàn thành');
     indexActive = index;
     update();
 

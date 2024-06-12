@@ -1,18 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:qlish/src/core/utils/repository/user_repository/UserRepository.dart';
 import 'package:qlish/src/core/utils/toast_message/toast_message.dart';
 import 'package:qlish/src/data/models/user.dart';
+import 'package:qlish/src/data/models/wordSaved.dart';
 import 'package:qlish/src/data/models/wordTopic.dart';
+import 'package:qlish/src/data/models/wordTopicWithSavedCount%20.dart';
 
 import '../../../../data/models/word.dart';
 import '../../../../data/models/wordLearnt.dart';
-import '../../../../data/models/wordTopicWithLearntCount .dart';
 
 
-class WordLearnRepository extends GetxController {
+class SavedWordRepository extends GetxController {
 
-  static WordLearnRepository get instance => Get.find();
+  static SavedWordRepository get instance => Get.find();
 
 
   final _db = FirebaseFirestore.instance;
@@ -46,6 +48,30 @@ class WordLearnRepository extends GetxController {
       }
     }
   }
+  Future<void> savedWord(String? wordId) async {
+    final userId = UserRepository.instance.currentUser.id;
+    await _db.collection('savedWord').add({
+      "userId": userId,
+      "wordId": wordId
+    });
+  }
+
+
+  Future<void> unSavedWord(String? wordId) async {
+    final userId = UserRepository.instance.currentUser.id;
+    QuerySnapshot  querySnapshot = await _db.collection('savedWord')
+        .where('userId', isEqualTo: userId)
+        .where('wordId', isEqualTo: wordId)
+        .get();
+
+    // Duyệt qua các kết quả truy vấn và xóa từng document
+    for (QueryDocumentSnapshot doc in querySnapshot.docs) {
+      await FirebaseFirestore.instance.collection('savedWord').doc(doc.id).delete();
+    }
+
+  }
+
+
 
 
   // Hàm lấy tất cả wordTopic từ Firestore
@@ -60,14 +86,14 @@ class WordLearnRepository extends GetxController {
     return snapshot.docs.map((doc) => WordModel.fromFirebase(doc)).toList();
   }
 
-  // Hàm lấy tất cả wordLearnt từ Firestore
-  Future<List<WordLearntModel>> getAllWordLearnts() async {
-    QuerySnapshot snapshot = await _db.collection('wordLearnt').get();
-    return snapshot.docs.map((doc) => WordLearntModel.fromFirebase(doc)).toList();
+  // Hàm lấy tất cả wordSaved từ Firestore
+  Future<List<WordSavedModel>> getAllWordSaveds() async {
+    QuerySnapshot snapshot = await _db.collection('savedWord').get();
+    return snapshot.docs.map((doc) => WordSavedModel.fromFirebase(doc)).toList();
   }
 
   // Hàm lấy tất cả wordTopic kèm theo số lượng wordLearnt tương ứng
-  Future<List<WordTopicWithLearntCount>> getWordTopicsWithLearntCount() async {
+  Future<List<WordTopicWithSavedCount>> getWordTopicsWithSavedCount() async {
     // Lấy tất cả wordTopic
     List<WordTopicModel> wordTopics = await getAllWordTopics();
 
@@ -75,10 +101,10 @@ class WordLearnRepository extends GetxController {
     List<WordModel> words = await getAllWords();
 
     // Lấy tất cả wordLearnt
-    List<WordLearntModel> wordLearnts = await getAllWordLearnts();
+    List<WordSavedModel> wordSaveds = await getAllWordSaveds();
 
     // Tạo danh sách để lưu kết quả
-    List<WordTopicWithLearntCount> result = [];
+    List<WordTopicWithSavedCount> result = [];
 
     // Đếm số lượng wordLearnt cho mỗi wordTopic
     for (var wordTopic in wordTopics) {
@@ -86,12 +112,14 @@ class WordLearnRepository extends GetxController {
       List<WordModel> wordsOfTopic = words.where((word) => word.wordTopicId == wordTopic.id).toList();
 
       // Đếm số lượng wordLearnt có id của các từ này
-      List<WordModel> learntWords = wordsOfTopic.where((element) => wordLearnts.any((learnt) => learnt.wordId == element.id)).toList();
+      List<WordModel> learntWords = wordsOfTopic.where((element) => wordSaveds.any((learnt) => learnt.wordId == element.id)).toList();
 
       // Thêm vào danh sách kết quả
-      result.add(WordTopicWithLearntCount(wordTopic: wordTopic, listWords: learntWords));
+      result.add(WordTopicWithSavedCount(wordTopic: wordTopic, listWords: learntWords));
     }
 
     return result;
   }
+
+
 }

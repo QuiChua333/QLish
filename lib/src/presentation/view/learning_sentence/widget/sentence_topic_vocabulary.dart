@@ -123,16 +123,17 @@ class CardTopicSentence extends StatelessWidget  {
                     child: SizedBox(height: 0,),
                     preferredSize: Size.fromRadius(18),
                   ),
-                  avatarChild: (context, data) => const PreferredSize(
+                  avatarChild: (context, data) =>  PreferredSize(
                     child: CircleAvatar(
                       radius: 8,
-                      backgroundColor: Colors.grey,
+                       backgroundColor: (data['round'] - 1 > controller.lastIndexFinish + 1) ? Colors.grey : AppColors.mainColor,
                     ),
                     preferredSize: Size.fromRadius(10),
                   ),
                   contentChild: (context, data) {
                     return  InkWell(
                       onTap: () {
+                        if (data['round'] - 1 > controller.lastIndexFinish + 1) return;
                         Get.toNamed(AppRoutes.LEARNING_SENTENCE_ROUND, arguments:{
                           "roundStatus": data,
                           "roundSentence": sentenceTopicModel.sentences[data['round']-1]

@@ -24,9 +24,13 @@ import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/pract
 import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/result_vocabulary_page.dart';
 import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/learning_vocabulary_round_page.dart';
 import 'package:qlish/src/presentation/view/learning_vocabulary_round/widget/flash_card.dart';
+import 'package:qlish/src/presentation/view/learntWord/detail_learnt_word.dart';
+import 'package:qlish/src/presentation/view/learntWord/learnt_word_page.dart';
 import 'package:qlish/src/presentation/view/navigation_menu/dastboard.dart';
 import 'package:qlish/src/presentation/view/overview_profile/main/overview_profile_page.dart';
 import 'package:qlish/src/presentation/view/overview_rank/main/overview_rank_page.dart';
+import 'package:qlish/src/presentation/view/savedWord/detail_saved_word.dart';
+import 'package:qlish/src/presentation/view/savedWord/saved_word_page.dart';
 import 'package:qlish/src/presentation/view/signin.main/signin_binding.dart';
 import 'package:qlish/src/presentation/view/signin.main/signin_page.dart';
 import 'package:qlish/src/presentation/view/signup/main/signup_binding.dart';
@@ -155,7 +159,25 @@ class AppPages {
         page: () => CongratulationView()
     ),
 
+    GetPage(
+        name: AppRoutes.LEARNT_WORD_PAGE,
+        page: () => LearntWordPage()
+    ),
 
+    GetPage(
+        name: AppRoutes.LEARNT_WORD_DETAIL_PAGE,
+        page: () => LearntWordDetailPage()
+    ),
+
+    GetPage(
+        name: AppRoutes.SAVED_WORD_PAGE,
+        page: () => SavedWordPage()
+    ),
+
+    GetPage(
+        name: AppRoutes.SAVED_WORD_DETAIL_PAGE,
+        page: () => SavedWordDetailPage()
+    ),
 
   ];
 }

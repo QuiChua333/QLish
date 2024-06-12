@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:qlish/src/core/utils/constants/app_colors.dart';
+import 'package:qlish/src/core/utils/toast_message/toast_message.dart';
 import 'package:qlish/src/data/models/word.dart';
 import 'package:qlish/src/presentation/view/learning_vocabulary_round/main/learning_vocabulary_round_controller.dart';
 
@@ -36,9 +37,14 @@ class FlashCard extends StatelessWidget  {
 
                   },
                     child: Image.asset('assets/images/volume.png')),
-                IconButton(onPressed: (){
-
+                if (!controller.listIdSave.contains(word.id)) IconButton(onPressed: (){
+                  controller.saveWord(word.id);
+                  ToastMessage.show('Đã  lưu từ', ToastMessage.SUCCESS);
                 }, icon: Icon(Icons.download,color: Color(0xffADADAD),))
+                else IconButton(onPressed: (){
+                  controller.saveWord(word.id);
+                  ToastMessage.show('Đã hủy lưu từ', ToastMessage.SUCCESS);
+                }, icon: Icon(Icons.download,color: AppColors.mainColor,))
               ],
             ),
             Center(

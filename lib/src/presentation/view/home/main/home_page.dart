@@ -25,6 +25,7 @@ class HomePage extends StatelessWidget {
 
     return GetBuilder<HomeController>(
       builder: (_) {
+        controller.ref();
         return SafeArea(
           child: Scaffold(
               appBar: AppBar(
@@ -89,9 +90,9 @@ class HomePage extends StatelessWidget {
                                     radius: 36,
                                     lineWidth: 6,
                                     animation: true,
-                                    percent: 0.4,
+                                    percent: 1,
                                     center: const Text(
-                                      '100',
+                                      '',
                                       style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                           color: Color(0xff3FB8D2),
@@ -108,11 +109,11 @@ class HomePage extends StatelessWidget {
                                       CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "Từ vựng",
+                                          "Ứng dụng học tiếng anh",
                                           style: TextStyle(
                                               color: Color(0xffBCB4B5)),
                                         ),
-                                        Text("Vòng 3: Động vật",
+                                        Text("QLISH",
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontWeight: FontWeight.w600)),
@@ -141,7 +142,7 @@ class HomePage extends StatelessWidget {
                                     onTap: ()  {
 
                                     },
-                                    text: "Học tiếp",
+                                    text: "Khám phá",
                                     borderRadius: 20,
                                     textWeight: FontWeight.w600,
                                     textColor: Colors.white,
@@ -154,42 +155,7 @@ class HomePage extends StatelessWidget {
                       SizedBox(
                         height: 16,
                       ),
-                      Container(
-                        height: 45,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            border:
-                            Border.all(width: 1, color: Color(0xffDDDDDD)),
-                            color: Colors.white),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.search,
-                                  color: Color(0xff6A9FDD),
-                                )),
-                            const Expanded(
-                              child: TextField(
-                                decoration: InputDecoration.collapsed(
-                                  hintText: 'Tra từ điển',
-                                  hintStyle: TextStyle(
-                                      fontSize: 14, color: Color(0xffB9BBC0)),
-                                  border: InputBorder.none,
-                                ),
-                                cursorColor: Color(0xff6A9FDD),
-                              ),
-                            ),
-                            IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.mic,
-                                  color: Color(0xff6A9FDD),
-                                ))
-                          ],
-                        ),
-                      ),
+
                       Container(
                         margin: EdgeInsets.only(top: Get.height * 0.05),
                         padding: EdgeInsets.symmetric(horizontal: 12),
@@ -276,34 +242,4 @@ class HomePage extends StatelessWidget {
   }
 }
 
-// Stack(
-// children: [
-// Container(
-// height: 170,
-// decoration: const BoxDecoration(
-// borderRadius: BorderRadius.only(
-// topLeft: Radius.circular(1.43),
-// topRight: Radius.circular(17.2),
-// bottomLeft: Radius.circular(17.2),
-// bottomRight: Radius.circular(1.43) ),
-// image: DecorationImage(
-// image: AssetImage('assets/images/card_home.png'),
-// fit: BoxFit.cover
-// ),
-// ),
-// ),
-// Container(
-// height: 150,
-// padding: EdgeInsets.all(24),
-// child: Column(
-// children: [
-// Row(
-// children: [
-//
-// ],
-// )
-// ],
-// ),
-// )
-// ],
-// ),
+

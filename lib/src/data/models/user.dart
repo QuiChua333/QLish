@@ -7,7 +7,6 @@ class UserModel {
   final String email;
   final String password;
   final String name;
-  final String rank;
   final int score;
   final String avatar;
 
@@ -19,7 +18,6 @@ class UserModel {
     required this.email,
     required this.password,
     required this.name,
-     this.rank = 'Đồng',
      this.score = 0,
      this.avatar = defaultAvatar,
   });
@@ -32,7 +30,6 @@ class UserModel {
       "email": email,
       "name": name,
       "password": password,
-      "rank": rank,
       "score": score,
       "avatar": avatar,
     };
@@ -45,7 +42,6 @@ class UserModel {
       email: data["email"],
       avatar: data["avatar"],
       password: data["password"],
-      rank: data['rank'],
       score: data['score'],
     );
   }
