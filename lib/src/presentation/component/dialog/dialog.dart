@@ -8,7 +8,17 @@ import 'package:qlish/src/core/utils/constants/app_colors.dart';
 import 'package:qlish/src/presentation/component/button/button.dart';
 
 class CustomDialog extends StatelessWidget {
-  const CustomDialog({super.key});
+   CustomDialog({super.key,
+     required this.onTap,
+     this.title,
+     this.content,
+     this.contentOk,
+   });
+
+   VoidCallback onTap;
+   String? title;
+   String? content;
+   String? contentOk;
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -25,15 +35,15 @@ class CustomDialog extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('PHẦN LUYỆN TẬP', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),),
+                  Text('${title}', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),),
                   SizedBox(height: 20,),
-                  Text('Hãy đạt điểm số từ 8 trở lên để qua vòng bạn nhé!', textAlign: TextAlign.center,),
+                  Text('${content}', textAlign: TextAlign.center,),
                   SizedBox(height: 30,),
                   SizedBox(
                     width: 150,
                     child: CustomButton(
-                        onTap: (){},
-                        text: 'Bắt đầu',
+                        onTap: onTap,
+                        text: '${contentOk}',
                         backgroundColor: AppColors.mainColor,
                         textColor: Colors.white,
                         borderRadius: 8,
@@ -43,13 +53,7 @@ class CustomDialog extends StatelessWidget {
                 ],
               ),
             ),
-            Positioned(
-                top: 2,
-                right: 2,
-                child: IconButton(onPressed: (){
-                  Navigator.of(context).pop();
-                }, icon: Icon(FontAwesomeIcons.xmark))
-            )
+
           ],
         ),
     );

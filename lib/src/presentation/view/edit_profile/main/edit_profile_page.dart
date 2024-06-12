@@ -4,12 +4,13 @@ import 'package:get/get.dart';
 import 'package:qlish/src/core/utils/constants/app_colors.dart';
 import 'package:qlish/src/core/utils/constants/app_routes.dart';
 import 'package:qlish/src/core/utils/repository/authentication_repository/authentication_repository.dart';
+import 'package:qlish/src/core/utils/repository/user_repository/UserRepository.dart';
 import 'package:qlish/src/presentation/component/button/button.dart';
 import 'package:qlish/src/presentation/view/edit_profile/widget/form_info.dart';
 
 class EditProfilePage extends StatelessWidget {
   EditProfilePage({Key? key}) : super(key: key);
-
+  final user = UserRepository.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -45,9 +46,9 @@ class EditProfilePage extends StatelessWidget {
                               )
                             ],
                             shape: BoxShape.circle,
-                            image: const DecorationImage(
+                            image:  DecorationImage(
                               fit: BoxFit.cover,
-                              image: NetworkImage('https://cdn.pixabay.com/photo/2023/11/20/23/06/woman-8402052_1280.jpg')
+                              image: NetworkImage('${user.avatar}')
                             )
                           ),
                         ),
@@ -74,16 +75,11 @@ class EditProfilePage extends StatelessWidget {
                       children: [
                         FormInfo(
                             label: "Tên", 
-                            content: "Huỳnh Ngọc Quí", 
+                            content: "${user.name}",
                             isChange: true, 
                             onTap: () {
                               Get.toNamed(AppRoutes.CHANGE_NAME);
                             }
-                        ),
-                        const SizedBox(height: 16,),
-                        FormInfo(
-                            label: "Tên đăng nhập",
-                            content: "quichua333",
                         ),
                         const SizedBox(height: 16,),
                         FormInfo(
@@ -97,7 +93,7 @@ class EditProfilePage extends StatelessWidget {
                         const SizedBox(height: 16,),
                         FormInfo(
                             label: "Email liên kết",
-                            content: "quichua333@gmail.com",
+                            content: "${user.email}",
                         ),
                       ],
                     ),

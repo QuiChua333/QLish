@@ -155,22 +155,7 @@ class StudyVocabularyRoundState extends State<LearningVocabularyRoundPage> with 
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          if (showContinue) Align(
-            alignment: Alignment.bottomCenter,
-            child: InkWell(
-              onTap: (){
 
-                showDialog(context: context, builder: (context) => const CustomDialog());
-              },
-              child: Container(
-                width: Get.width,
-                height: 65,
-                color: AppColors.mainColor,
-                alignment: Alignment.center,
-                child: Text('TIẾP TỤC', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15, color: Colors.white),),
-              ),
-            ),
-          ),
           // So luong de sau, nho
 
           // Card

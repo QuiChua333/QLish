@@ -9,6 +9,8 @@ class UserModel {
   final String name;
   final int score;
   final String avatar;
+  final bool isTested;
+  final int level;
 
 
 
@@ -20,6 +22,8 @@ class UserModel {
     required this.name,
      this.score = 0,
      this.avatar = defaultAvatar,
+     this.isTested = false,
+     this.level = 1,
   });
 
 
@@ -32,6 +36,7 @@ class UserModel {
       "password": password,
       "score": score,
       "avatar": avatar,
+      "isTested": isTested
     };
   }
   factory UserModel.fromFirebase(DocumentSnapshot snapshot) {
@@ -43,6 +48,7 @@ class UserModel {
       avatar: data["avatar"],
       password: data["password"],
       score: data['score'],
+      isTested: data['isTested'],
     );
   }
 

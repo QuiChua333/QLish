@@ -65,4 +65,14 @@ class UserRepository extends GetxController {
     }
 
   }
+
+  Future<void> changeTestSuccess({int? level}) async{
+
+
+    await FirebaseFirestore.instance.collection('user').doc(currentUser.id).update({
+      'isTested': true,
+      'level': level
+    });
+
+  }
 }

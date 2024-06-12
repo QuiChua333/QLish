@@ -36,6 +36,7 @@ class AppRoutes {
 
   static const String SAVED_WORD_PAGE = "/savedwordpage";
   static const String SAVED_WORD_DETAIL_PAGE = "/savedworddetailpage";
+  static const String PRE_TEST = "/pretest";
 
 
 

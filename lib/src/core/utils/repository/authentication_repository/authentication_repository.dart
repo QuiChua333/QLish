@@ -3,10 +3,13 @@ import 'package:get/get.dart';
 import 'package:qlish/src/core/utils/constants/app_routes.dart';
 import 'package:qlish/src/core/utils/repository/authentication_repository/exceptions/signin_email_password_failure.dart';
 import 'package:qlish/src/core/utils/repository/authentication_repository/exceptions/signup_email_password_failure.dart';
+import 'package:qlish/src/core/utils/repository/user_repository/UserRepository.dart';
 import 'package:qlish/src/core/utils/toast_message/toast_message.dart';
+import 'package:qlish/src/data/models/user.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
+  final _userRepo = Get.put(UserRepository());
 
   final _auth = FirebaseAuth.instance;
   late final Rx<User?> firebaseUser;
@@ -20,9 +23,27 @@ class AuthenticationRepository extends GetxController {
     setInitialScreen(firebaseUser.value);
   }
 
-  setInitialScreen(User? user) {
+  setInitialScreen(User? user) async {
+    if (user == null) {
+      Get.offAllNamed(AppRoutes.INTRO);
+    }
+    else {
+      if (user.emailVerified) {
+        UserModel userModel = await _userRepo.getUserDetail(user.email!);
+        ToastMessage.show('Đăng ký và xác minh thành công', ToastMessage.SUCCESS);
+        if (!userModel.isTested) {
+          Get.offAllNamed(AppRoutes.PRE_TEST);
+        }
+        else {
+          Get.offAllNamed(AppRoutes.DASHBOARD);
+        }
 
-    user == null ? Get.offAllNamed(AppRoutes.INTRO) : user.emailVerified ? Get.offAllNamed(AppRoutes.DASHBOARD) : Get.toNamed(AppRoutes.EMAIL_VERIFY);
+      }
+      else {
+        Get.toNamed(AppRoutes.EMAIL_VERIFY);
+      }
+    }
+
   }
 
   Future<void> createUserWithEmailAndPassword(String email, String password) async {

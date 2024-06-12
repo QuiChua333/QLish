@@ -29,6 +29,7 @@ import 'package:qlish/src/presentation/view/learntWord/learnt_word_page.dart';
 import 'package:qlish/src/presentation/view/navigation_menu/dastboard.dart';
 import 'package:qlish/src/presentation/view/overview_profile/main/overview_profile_page.dart';
 import 'package:qlish/src/presentation/view/overview_rank/main/overview_rank_page.dart';
+import 'package:qlish/src/presentation/view/pretest/main/test_page.dart';
 import 'package:qlish/src/presentation/view/savedWord/detail_saved_word.dart';
 import 'package:qlish/src/presentation/view/savedWord/saved_word_page.dart';
 import 'package:qlish/src/presentation/view/signin.main/signin_binding.dart';
@@ -177,6 +178,11 @@ class AppPages {
     GetPage(
         name: AppRoutes.SAVED_WORD_DETAIL_PAGE,
         page: () => SavedWordDetailPage()
+    ),
+
+    GetPage(
+        name: AppRoutes.PRE_TEST,
+        page: () => TestPage()
     ),
 
   ];
